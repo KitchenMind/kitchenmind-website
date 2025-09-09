@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Behance, CloseTwo, Dribble, InstagramTwo, Youtube } from "../svg";
@@ -22,6 +23,7 @@ type IProps = {
 };
 
 export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const { setTheme, theme, resolvedTheme } = useTheme();
   const lang = searchParams?.get('lang') || 'vi';
@@ -30,16 +32,31 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
     getStarted: 'Get Started',
     joinUs: 'Join us today!',
     darkMode: 'Dark Mode',
-    lightMode: 'Light Mode'
+    lightMode: 'Light Mode',
+    language: 'Language',
+    vietnamese: 'Tiếng Việt',
+    english: 'English'
   } : {
     getStarted: 'Bắt Đầu',
     joinUs: 'Tham gia cùng chúng tôi hôm nay!',
     darkMode: 'Chế độ tối',
-    lightMode: 'Chế độ sáng'
+    lightMode: 'Chế độ sáng',
+    language: 'Ngôn ngữ',
+    vietnamese: 'Tiếng Việt',
+    english: 'English'
   };
 
   const handleThemeChange = (newTheme: 'light' | 'dark') => {
     setTheme(newTheme);
+  };
+
+  const handleLanguageChange = (newLang: 'vi' | 'en') => {
+    const currentPath = window.location.pathname;
+    const currentSearch = window.location.search;
+    const params = new URLSearchParams(currentSearch);
+    params.set('lang', newLang);
+    const newUrl = `${currentPath}?${params.toString()}`;
+    router.push(newUrl);
   };
 
   return (
@@ -115,6 +132,27 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
               </ul>
             </div>
 
+            {/* Language Switcher */}
+            <div className="tp-offcanvas-language-toggle">
+              <h3 className="tp-offcanvas-title sm">{texts.language}</h3>
+              <div className="tp-mobile-language-switcher">
+                <button
+                  onClick={() => handleLanguageChange('vi')}
+                  className={`tp-mobile-lang-btn ${lang === 'vi' ? 'active' : ''}`}
+                >
+                  <span className="tp-lang-flag">🇻🇳</span>
+                  <span className="tp-lang-text">{texts.vietnamese}</span>
+                </button>
+                <button
+                  onClick={() => handleLanguageChange('en')}
+                  className={`tp-mobile-lang-btn ${lang === 'en' ? 'active' : ''}`}
+                >
+                  <span className="tp-lang-flag">🇺🇸</span>
+                  <span className="tp-lang-text">{texts.english}</span>
+                </button>
+              </div>
+            </div>
+
             {/* Theme Toggle */}
             <div className="tp-offcanvas-theme-toggle">
               <h3 className="tp-offcanvas-title sm">Theme</h3>
@@ -160,6 +198,56 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
       ></div>
 
       <style jsx global>{`
+        /* Mobile Language Toggle */
+        .tp-offcanvas-language-toggle {
+          margin-top: 30px;
+          padding-bottom: 30px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tp-mobile-language-switcher {
+          display: flex;
+          gap: 10px;
+          margin-top: 15px;
+        }
+
+        .tp-mobile-lang-btn {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 12px 16px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 12px;
+          color: #ffffff;
+          font-size: 14px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .tp-mobile-lang-btn:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(255, 255, 255, 0.2);
+          transform: translateY(-1px);
+        }
+
+        .tp-mobile-lang-btn.active {
+          background: linear-gradient(135deg, #FF6A00, #FFA437);
+          border-color: #FF6A00;
+          color: #ffffff;
+          box-shadow: 0 4px 15px rgba(255, 106, 0, 0.3);
+        }
+
+        .tp-lang-flag {
+          font-size: 16px;
+        }
+
+        .tp-lang-text {
+          font-size: 13px;
+        }
+
         /* Mobile Theme Toggle */
         .tp-offcanvas-theme-toggle {
           margin-top: 30px;
@@ -320,6 +408,17 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
         }
 
         /* Dark mode styles */
+        .dark .tp-mobile-lang-btn {
+          background: rgba(255, 255, 255, 0.08);
+          border-color: rgba(255, 255, 255, 0.15);
+          color: #ffffff;
+        }
+
+        .dark .tp-mobile-lang-btn:hover {
+          background: rgba(255, 255, 255, 0.12);
+          border-color: rgba(255, 255, 255, 0.25);
+        }
+
         .dark .tp-mobile-theme-btn {
           background: rgba(255, 255, 255, 0.08);
           border-color: rgba(255, 255, 255, 0.15);
@@ -354,6 +453,16 @@ export default function MobileOffcanvas({openOffcanvas,setOpenOffcanvas}: IProps
             font-size: 12px;
           }
           
+          .tp-mobile-language-switcher {
+            flex-direction: column;
+            gap: 8px;
+          }
+          
+          .tp-mobile-lang-btn {
+            justify-content: center;
+            padding: 14px 16px;
+          }
+
           .tp-mobile-theme-switcher {
             flex-direction: column;
             gap: 8px;

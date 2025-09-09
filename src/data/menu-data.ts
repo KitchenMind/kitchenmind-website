@@ -26,12 +26,12 @@ export function getMobileMenuData(lang = 'vi') {
     home: 'Home',
     pricing: 'Pricing',
     contact: 'Contact',
-    login: 'Login',
+    login: 'Login / Register',
   } : {
     home: 'Trang chủ',
     pricing: 'Giá',
     contact: 'Liên Hệ',
-    login: 'Đăng nhập',
+    login: 'Đăng nhập / Đăng ký',
   };
 
   return [

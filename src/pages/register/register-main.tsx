@@ -52,6 +52,14 @@ const RegisterMain = () => {
           {/* Left Side - Register Form */}
           <div className="mongodb-auth-left">
             <div className="mongodb-auth-content">
+              {/* Back to Home Button */}
+              <div className="mongodb-back-home">
+                <Link href={`/?lang=${lang}`} className="mongodb-back-btn">
+                  <span className="mongodb-back-icon">←</span>
+                  <span className="mongodb-back-text">{texts.backToHome}</span>
+                </Link>
+              </div>
+
               {/* Logo Section */}
               <div className="mongodb-auth-logo">
                 <img src="https://placehold.co/120x40?text=KitchenMind&bg=FF6A00&color=white" alt="KitchenMind" className="mongodb-logo-img" />

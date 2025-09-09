@@ -336,6 +336,33 @@
             @media #{$md,$xs}{
                 padding: 30px;
             }
+            
+            // Ensure proper text colors in light mode
+            [data-theme='light'] & {
+                color: #000000 !important;
+                
+                a, span, div, li, ul {
+                    color: #000000 !important;
+                }
+                
+                // Override any inherited colors
+                * {
+                    color: #000000 !important;
+                }
+            }
+            
+            // Dark mode support
+            [data-theme='dark'] & {
+                color: #ffffff !important;
+                
+                a, span, div, li, ul {
+                    color: #ffffff !important;
+                }
+                
+                * {
+                    color: #ffffff !important;
+                }
+            }
             & > nav {
                 & > ul {
                     margin-bottom: 10px;
@@ -435,6 +462,36 @@
         & .tp-main-menu-mobile nav ul li.has-dropdown > a .dropdown-toggle-btn {
             font-size: 22px;
         }
+        
+        // Force black text in light mode for all navigation elements
+        [data-theme='light'] & {
+            .tp-main-menu-mobile {
+                color: #000000 !important;
+                
+                nav, ul, li, a, span, div {
+                    color: #000000 !important;
+                }
+                
+                * {
+                    color: #000000 !important;
+                }
+            }
+        }
+        
+        // Force white text in dark mode for all navigation elements
+        [data-theme='dark'] & {
+            .tp-main-menu-mobile {
+                color: #ffffff !important;
+                
+                nav, ul, li, a, span, div {
+                    color: #ffffff !important;
+                }
+                
+                * {
+                    color: #ffffff !important;
+                }
+            }
+        }
     }
     &-bg {
         &.left-box{
@@ -466,14 +523,34 @@
             @include transform(scale(1, 0));
             transform-origin: top center;
             background: #F5F5F5;
-                transition-delay: 0.2s;
+            transition-delay: 0.2s;
+            
+            // Ensure proper background in light mode
+            [data-theme='light'] & {
+                background: #F5F5F5 !important;
+            }
+            
+            // Dark mode support
+            [data-theme='dark'] & {
+                background: #1a1a1a !important;
+            }
         }
         &.is-right {
             right: 0;
             transform-origin: bottom center;
             @include transform(scale(1, 0));
             background-color: #FFFFFF;
-                transition-delay: 0.2s;
+            transition-delay: 0.2s;
+            
+            // Ensure proper background in light mode
+            [data-theme='light'] & {
+                background-color: #FFFFFF !important;
+            }
+            
+            // Dark mode support
+            [data-theme='dark'] & {
+                background-color: #2a2a2a !important;
+            }
         }
     }
     &-wrapper {
@@ -563,6 +640,24 @@
             font-size: 14px;
             font-weight: 500;
             @extend %ff-dmsans;
+            
+            // Ensure proper colors in light mode
+            [data-theme='light'] & {
+                color: #000000 !important;
+                
+                .text {
+                    color: #000000 !important;
+                }
+            }
+            
+            // Dark mode support
+            [data-theme='dark'] & {
+                color: #ffffff !important;
+                
+                .text {
+                    color: #ffffff !important;
+                }
+            }
             & .text {
                 width: 60px;
                 height: 20px;
@@ -623,6 +718,26 @@
         & img{
             width: 85px;
             height: 100%;
+        }
+        
+        // Ensure proper logo display in light mode
+        [data-theme='light'] & {
+            .logo-1 {
+                display: block !important;
+            }
+            .logo-2 {
+                display: none !important;
+            }
+        }
+        
+        // Dark mode support
+        [data-theme='dark'] & {
+            .logo-1 {
+                display: none !important;
+            }
+            .logo-2 {
+                display: block !important;
+            }
         }
     }
     &__right-wrap {
@@ -741,7 +856,7 @@
         left: 0;
         width: 100%;
         height: 100vh;
-        background-color: rgba(0, 0, 0, 0.8); // 80% opacity
+        background-color: rgba(0, 0, 0, 0.5); // Reduced opacity for better visibility
         z-index: 9998;
         visibility: hidden;
         opacity: 0;
@@ -753,8 +868,33 @@
         }
     }
     
-    // Reduce right box opacity to 80%
-    &-bg.is-right {
-        background-color: rgba(0, 0, 0, 0.8) !important; // 80% opacity
+    // Fix background colors for light and dark modes
+    &-bg {
+        &.is-left {
+            background: #F5F5F5 !important;
+            
+            // Dark mode support
+            [data-theme='dark'] & {
+                background: #1a1a1a !important;
+            }
+        }
+        
+        &.is-right {
+            background-color: #FFFFFF !important;
+            
+            // Dark mode support  
+            [data-theme='dark'] & {
+                background-color: #2a2a2a !important;
+            }
+        }
+    }
+    
+    // Ensure proper z-index stacking
+    &-area {
+        z-index: 99999 !important;
+    }
+    
+    &-wrapper {
+        z-index: 100000 !important;
     }
 }

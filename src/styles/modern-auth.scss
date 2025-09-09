@@ -47,10 +47,12 @@
 
 // Auth Main Layout
 .mongodb-auth-main {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
   background: var(--auth-bg-secondary);
   position: relative;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
 }
 
 // Theme Toggle
@@ -69,11 +71,8 @@
 // 2-Column Layout (20-80 ratio)
 .mongodb-auth-layout {
   display: flex;
-  min-height: 100vh;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+  height: 100vh;
+  max-height: 100vh;
 }
 
 // Left Side - Form (20%)
@@ -84,12 +83,26 @@
   justify-content: center;
   padding: 2rem;
   background: var(--auth-bg-primary);
+  min-width: 300px; // Minimum width to prevent form from being too narrow
+
+  @media (max-width: 1200px) {
+    flex: 0 0 25%; // Slightly larger on medium screens
+  }
+
+  @media (max-width: 992px) {
+    flex: 0 0 30%; // Even larger on smaller screens
+  }
 
   @media (max-width: 768px) {
-    order: 1;
-    flex: none;
-    min-height: 100vh;
+    flex: 0 0 35%; // Larger still
+  }
+
+  @media (max-width: 640px) {
+    flex: 1; // Take full width only on very small screens
+    height: 100vh;
+    max-height: 100vh;
     padding: 1.5rem;
+    overflow-y: auto;
   }
 }
 
@@ -100,14 +113,25 @@
 
 // Right Side - Visual (80%)
 .mongodb-auth-right {
-  flex: 0 0 80%;
+  flex: 1; // Take remaining space
   position: relative;
   overflow: hidden;
+  min-width: 0; // Allow it to shrink
+
+  @media (max-width: 1200px) {
+    flex: 0 0 75%; // Adjust accordingly
+  }
+
+  @media (max-width: 992px) {
+    flex: 0 0 70%;
+  }
 
   @media (max-width: 768px) {
-    order: 0;
-    flex: none;
-    min-height: 50vh;
+    flex: 0 0 65%;
+  }
+
+  @media (max-width: 640px) {
+    display: none; // Hide completely only on very small screens
   }
 }
 
@@ -115,11 +139,23 @@
 .mongodb-full-image {
   width: 100%;
   height: 100vh;
+  max-height: 100vh;
   background-image: url('https://placehold.co/1600x1200/336EF9/FFFFFF?text=Kitchen+Management+App');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+
+  // Medium screens - different image
+  @media (max-width: 1024px) and (min-width: 768px) {
+    background-image: url('https://placehold.co/1200x1600/2563EB/FFFFFF?text=Smart+Kitchen+Mobile');
+    background-position: center;
+  }
+
+  // Small screens - focus on right side
+  @media (max-width: 768px) {
+    background-position: center right;
+  }
 
   // Subtle overlay for better visual appeal
   &::before {
@@ -133,14 +169,16 @@
     pointer-events: none;
   }
 
-  @media (max-width: 768px) {
-    height: 50vh;
-  }
 }
 
 // Different image for register page
 .mongodb-full-image-register {
   background-image: url('https://placehold.co/1600x1200/EB5939/FFFFFF?text=Join+KitchenMind+Community');
+  
+  // Medium screens - different register image
+  @media (max-width: 1024px) and (min-width: 768px) {
+    background-image: url('https://placehold.co/1200x1600/DC4A2A/FFFFFF?text=Join+KitchenMind+Mobile');
+  }
   
   &::before {
     background: linear-gradient(135deg, rgba(51, 110, 249, 0.1) 0%, rgba(235, 89, 57, 0.1) 100%);
@@ -149,13 +187,60 @@
 
 
 // MongoDB Logo Section
+// Back to Home Button
+.mongodb-back-home {
+  margin-bottom: 1.5rem;
+}
+
+.mongodb-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--auth-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  transition: var(--auth-transition);
+  
+  &:hover {
+    color: var(--auth-primary);
+    text-decoration: none;
+  }
+}
+
+.mongodb-back-icon {
+  font-size: 1rem;
+  transition: var(--auth-transition);
+}
+
+.mongodb-back-btn:hover .mongodb-back-icon {
+  transform: translateX(-2px);
+}
+
+.mongodb-back-text {
+  font-size: 0.875rem;
+}
+
+// Logo Section
 .mongodb-auth-logo {
   text-align: center;
   margin-bottom: 2rem;
 
   .mongodb-logo-img {
-    height: 40px;
-    width: auto;
+    width: 385px;
+    height: auto;
+    max-width: 100%;
+    
+    @media (max-width: 768px) {
+      width: 280px;
+      max-width: 90%;
+    }
+    
+    @media (max-width: 480px) {
+      width: 120px;
+      max-width: 85%;
+    }
   }
 
   .mongodb-logo-icon {
@@ -523,6 +608,11 @@
   .mongodb-full-image {
     background-image: url('https://placehold.co/1600x1200/1E1E1E/FFFFFF?text=Kitchen+Management+App');
     
+    // Medium screens - different dark image
+    @media (max-width: 1024px) and (min-width: 768px) {
+      background-image: url('https://placehold.co/1200x1600/141414/FFFFFF?text=Smart+Kitchen+Dark+Mobile');
+    }
+    
     &::before {
       background: linear-gradient(135deg, rgba(235, 89, 57, 0.2) 0%, rgba(51, 110, 249, 0.2) 100%);
     }
@@ -530,6 +620,11 @@
 
   .mongodb-full-image-register {
     background-image: url('https://placehold.co/1600x1200/141414/FFFFFF?text=Join+KitchenMind+Community');
+    
+    // Medium screens - different dark register image
+    @media (max-width: 1024px) and (min-width: 768px) {
+      background-image: url('https://placehold.co/1200x1600/0F0F0F/FFFFFF?text=Join+KitchenMind+Dark+Mobile');
+    }
     
     &::before {
       background: linear-gradient(135deg, rgba(51, 110, 249, 0.2) 0%, rgba(235, 89, 57, 0.2) 100%);
@@ -595,6 +690,15 @@
     color: #B8B8B8 !important;
   }
   
+  // Back button
+  .mongodb-back-btn {
+    color: #B8B8B8 !important;
+    
+    &:hover {
+      color: #336EF9 !important;
+    }
+  }
+
   // Any remaining text elements
   p, span, div, label {
     color: inherit;

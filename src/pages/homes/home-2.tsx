@@ -48,8 +48,6 @@ const HomeTwoMain = () => {
       zoomAnimation();
       // panel animation
       panelOneAnimation();
-      // award animation
-      awardAnimOne();
       // instagram animation
       instagramAnim();
       hoverBtn();

@@ -48,7 +48,7 @@ const  ThemeSetting = () => {
 
   return (
     <div
-      className={`tp-theme-settings-area transition-3 ${
+      className={`tp-theme-settings-area transition-3 desktop-theme-setting ${
         settingOpen ? "settings-opened" : ""
       }`}
     >
@@ -93,6 +93,13 @@ const  ThemeSetting = () => {
           </div>
         </div>
       </div>
+      <style jsx global>{`
+        @media (max-width: 768px) {
+          .desktop-theme-setting {
+            display: none !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };

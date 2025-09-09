@@ -13,6 +13,7 @@ import FooterTwo from "@/layouts/footers/footer-two";
 import SocialLogin from "@/components/form/social-login";
 import LoginForm from "@/components/form/login-form";
 import ThemeSetting from "@/components/theme-setting";
+import logo from "@/assets/img/logo/logo.png";
 
 // Import necessary
 import { useSearchParams } from "next/navigation";
@@ -22,7 +23,7 @@ const LoginMain = () => {
   const texts = lang === 'en' 
     ? { 
         title: 'Welcome Back to KitchenMind', 
-        subtitle: 'Sign in to your account to continue',
+    
         noAccount: "Don't have an account?", 
         signUp: 'Create Account', 
         or: 'Or continue with email',
@@ -30,7 +31,7 @@ const LoginMain = () => {
       } 
     : { 
         title: 'Chào Mừng Trở Lại KitchenMind', 
-        subtitle: 'Đăng nhập để tiếp tục quản lý nhà bếp thông minh',
+     
         noAccount: 'Chưa có tài khoản?', 
         signUp: 'Tạo Tài Khoản', 
         or: 'Hoặc tiếp tục với email',
@@ -52,15 +53,23 @@ const LoginMain = () => {
           {/* Left Side - Login Form */}
           <div className="mongodb-auth-left">
             <div className="mongodb-auth-content">
+              {/* Back to Home Button */}
+              <div className="mongodb-back-home">
+                <Link href={`/?lang=${lang}`} className="mongodb-back-btn">
+                  <span className="mongodb-back-icon">←</span>
+                  <span className="mongodb-back-text">{texts.backToHome}</span>
+                </Link>
+              </div>
+
               {/* Logo Section */}
               <div className="mongodb-auth-logo">
-                <img src="https://placehold.co/120x40?text=KitchenMind&bg=FF6A00&color=white" alt="KitchenMind" className="mongodb-logo-img" />
+                <img src={logo.src} alt="KitchenMind" className="mongodb-logo-img" />
               </div>
 
               {/* Welcome Text */}
               <div className="mongodb-auth-welcome">
                 <h2 className="mongodb-welcome-title">{texts.title}</h2>
-                <p className="mongodb-welcome-subtitle">{texts.subtitle}</p>
+
               </div>
 
               {/* Social Login */}
