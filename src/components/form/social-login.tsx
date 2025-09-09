@@ -1,27 +1,34 @@
 import React from "react";
 import Image from "next/image";
 import google from "@/assets/img/login/google.svg";
-import facebook from "@/assets/img/login/facebook.svg";
-import apple from "@/assets/img/login/apple.svg";
 
-export default function SocialLogin() {
+interface SocialLoginProps {
+  lang?: string;
+}
+
+export default function SocialLogin({ lang = 'vi' }: SocialLoginProps) {
+  const texts = lang === 'en' 
+    ? { signInGoogle: 'Continue with Google' }
+    : { signInGoogle: 'Tiếp tục với Google' };
+
+  const handleGoogleLogin = () => {
+    // TODO: Implement Google OAuth
+    console.log("Google login clicked");
+  };
+
   return (
-    <div className="tp-login-social mb-10 d-flex flex-wrap align-items-center justify-content-center">
-      <div className="tp-login-option-item has-google">
-        <a href="#">
-          <Image src={google} alt="google" />
-          Sign in with google
-        </a>
-      </div>
-      <div className="tp-login-option-item">
-        <a href="#">
-          <Image src={facebook} alt="facebook" />
-        </a>
-      </div>
-      <div className="tp-login-option-item">
-        <a href="#">
-          <Image src={apple} alt="apple" className="apple" />
-        </a>
+    <div className="tp-login-social mb-20">
+      <div className="tp-login-google-wrapper">
+        <button 
+          type="button"
+          className="tp-login-google-btn w-100 d-flex align-items-center justify-content-center"
+          onClick={handleGoogleLogin}
+        >
+          <div className="tp-login-google-icon me-3">
+            <Image src={google} alt="google" width={20} height={20} />
+          </div>
+          <span className="tp-login-google-text">{texts.signInGoogle}</span>
+        </button>
       </div>
     </div>
   );

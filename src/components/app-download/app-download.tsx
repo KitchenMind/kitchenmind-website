@@ -282,6 +282,25 @@ const AppDownload = () => {
         </div>
       </div>
       <style jsx global>{`
+        /* App Download Area Container */
+        .tp-app-download-area {
+          position: relative;
+          overflow: visible;
+          z-index: 5;
+          isolation: isolate;
+          clear: both;
+        }
+        
+        /* Ensure no other elements overlap */
+        .tp-app-download-area * {
+          position: relative;
+        }
+        
+        .tp-app-download-content {
+          z-index: 12;
+          position: relative;
+        }
+
         /* Multi-layer gradient background */
         .tp-app-download-bg {
           background: 
@@ -289,6 +308,8 @@ const AppDownload = () => {
             url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
           position: relative;
           overflow: hidden;
+          z-index: 1;
+          isolation: isolate;
         }
         
         .tp-app-download-bg::before {
@@ -314,7 +335,8 @@ const AppDownload = () => {
             0 25px 50px rgba(0, 0, 0, 0.1),
             inset 0 1px 0 rgba(255, 255, 255, 0.2);
           position: relative;
-          z-index: 2;
+          z-index: 10;
+          isolation: isolate;
         }
         
         /* Typography */
@@ -415,6 +437,8 @@ const AppDownload = () => {
           perspective: 1000px;
           display: inline-block;
           margin-top: 20px;
+          z-index: 8;
+          position: relative;
         }
         
         .tp-smartphone-image {
@@ -469,6 +493,7 @@ const AppDownload = () => {
         .tp-glow-effect {
           position: relative;
           overflow: visible;
+          z-index: 15;
         }
         
         .tp-glow-effect::before {

@@ -12,65 +12,92 @@ import HeaderTwelve from "@/layouts/headers/header-twelve";
 import FooterTwo from "@/layouts/footers/footer-two";
 import SocialLogin from "@/components/form/social-login";
 import LoginForm from "@/components/form/login-form";
+import ThemeSetting from "@/components/theme-setting";
 
 // Import necessary
-import { useForm } from "react-hook-form";
 import { useSearchParams } from "next/navigation";
 
 const LoginMain = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
   const lang = useSearchParams()?.get('lang') || 'vi';
-  const texts = lang === 'en' ? { title: 'Sign In KitchenMind', noAccount: "Don’t have an account?", signUp: 'Sign Up', or: 'or Sign in with', email: 'Email' } : { title: 'Đăng Nhập KitchenMind', noAccount: 'Chưa có tài khoản?', signUp: 'Đăng Ký', or: 'hoặc Đăng nhập với', email: 'Email' };
+  const texts = lang === 'en' 
+    ? { 
+        title: 'Welcome Back to KitchenMind', 
+        subtitle: 'Sign in to your account to continue',
+        noAccount: "Don't have an account?", 
+        signUp: 'Create Account', 
+        or: 'Or continue with email',
+        backToHome: 'Back to Home'
+      } 
+    : { 
+        title: 'Chào Mừng Trở Lại KitchenMind', 
+        subtitle: 'Đăng nhập để tiếp tục quản lý nhà bếp thông minh',
+        noAccount: 'Chưa có tài khoản?', 
+        signUp: 'Tạo Tài Khoản', 
+        or: 'Hoặc tiếp tục với email',
+        backToHome: 'Về Trang Chủ'
+      };
 
   useScrollSmooth();
 
   return (
-    <Wrapper>
-      {/* header area start */}
-      <HeaderTwelve />
-      {/* header area end */}
-
-      <div id="smooth-wrapper">
-        <div id="smooth-content">
-          <main>
-            {/* register area */}
-            <section className="tp-login-area pt-180 pb-140 p-relative z-index-1 fix">
-              <div className="container">
-                <div className="row justify-content-center">
-                  <div className="col-xl-6 col-lg-8">
-                    <div className="tp-login-wrapper">
-                      <div className="tp-login-top text-center mb-30">
-                        <h3 className="tp-login-title">{texts.title}</h3>
-                        <p>{texts.noAccount} <span><Link href="/register">{texts.signUp}</Link></span></p>
-                      </div>
-                      <div className="tp-login-option">
-                        <SocialLogin />
-                        <p className="tp-login-mail text-center mb-40">{texts.or} <a href="#">Email</a></p>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                          <input type="email" placeholder={texts.email} {...register("email", { required: true })} />
-                          <input type="password" placeholder="Password" {...register("password", { required: true })} />
-                          <button type="submit">Login</button>
-                        </form>
-                        {/* Add OAuth */}
-                        <button>Sign in with Google</button>
-                        <button>Sign in with Apple</button>
-                        <label><input type="checkbox" /> Remember me</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            {/* register area */}
-          </main>
-
-          {/* footer area */}
-          <FooterTwo topCls="" />
-          {/* footer area */}
+    <>
+      {/* MongoDB-style login page - 2 column layout */}
+      <main className="mongodb-auth-main">
+        {/* Theme Toggle */}
+        <div className="mongodb-theme-toggle">
+          <ThemeSetting />
         </div>
-      </div>
-    </Wrapper>
+
+        <div className="mongodb-auth-layout">
+          {/* Left Side - Login Form */}
+          <div className="mongodb-auth-left">
+            <div className="mongodb-auth-content">
+              {/* Logo Section */}
+              <div className="mongodb-auth-logo">
+                <img src="https://placehold.co/120x40?text=KitchenMind&bg=FF6A00&color=white" alt="KitchenMind" className="mongodb-logo-img" />
+              </div>
+
+              {/* Welcome Text */}
+              <div className="mongodb-auth-welcome">
+                <h2 className="mongodb-welcome-title">{texts.title}</h2>
+                <p className="mongodb-welcome-subtitle">{texts.subtitle}</p>
+              </div>
+
+              {/* Social Login */}
+              <div className="mongodb-social-section">
+                <SocialLogin lang={lang} />
+              </div>
+
+              {/* Divider */}
+              <div className="mongodb-divider">
+                <div className="mongodb-divider-line"></div>
+                <span className="mongodb-divider-text">{texts.or}</span>
+                <div className="mongodb-divider-line"></div>
+              </div>
+
+              {/* Login Form */}
+              <div className="mongodb-form-section">
+                <LoginForm lang={lang} />
+              </div>
+
+              {/* Footer Links */}
+              <div className="mongodb-auth-footer">
+                <p className="mongodb-signup-link">
+                  {texts.noAccount} <Link href={`/register?lang=${lang}`} className="mongodb-link">{texts.signUp}</Link>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Full Image */}
+          <div className="mongodb-auth-right">
+            <div className="mongodb-full-image">
+              {/* Background image will be set via CSS */}
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
   );
 };
 

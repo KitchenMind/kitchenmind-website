@@ -1,0 +1,614 @@
+// MongoDB-style Authentication - Clean & Professional
+
+// Auth Page Variables - Using Landing Page Colors
+:root {
+  --auth-primary: #336EF9;           // Theme primary blue
+  --auth-primary-hover: #2563EB;     // Darker blue
+  --auth-orange: #EB5939;            // Landing orange
+  --auth-orange-hover: #DC4A2A;      // Darker orange
+  --auth-text-primary: #1E1E1E;      // Black
+  --auth-text-secondary: #5D5D63;    // Grey text
+  --auth-text-muted: #5D5D63;        // Body text
+  --auth-bg-primary: #F5F7F5;        // Common white
+  --auth-bg-secondary: #F7F7F7;      // Grey background
+  --auth-border: #EAEAEB;            // Border color
+  --auth-border-focus: #336EF9;      // Primary focus
+  --auth-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --auth-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.1);
+  --auth-radius: 8px;
+  --auth-transition: all 0.2s ease;
+}
+
+// Dark mode variables
+[data-theme="dark"] {
+  --auth-text-primary: #F5F7F5;
+  --auth-text-secondary: #B8B8B8;
+  --auth-text-muted: #A0A0A0;
+  --auth-bg-primary: #1E1E1E;
+  --auth-bg-secondary: #141414;
+  --auth-border: #262626;
+  --auth-border-focus: #336EF9;
+  --auth-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --auth-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+// Also support .dark class
+.dark {
+  --auth-text-primary: #F5F7F5;
+  --auth-text-secondary: #B8B8B8;
+  --auth-text-muted: #A0A0A0;
+  --auth-bg-primary: #1E1E1E;
+  --auth-bg-secondary: #141414;
+  --auth-border: #262626;
+  --auth-border-focus: #336EF9;
+  --auth-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --auth-shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+// Auth Main Layout
+.mongodb-auth-main {
+  min-height: 100vh;
+  background: var(--auth-bg-secondary);
+  position: relative;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+// Theme Toggle
+.mongodb-theme-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  z-index: 1000;
+
+  @media (max-width: 768px) {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+// 2-Column Layout (20-80 ratio)
+.mongodb-auth-layout {
+  display: flex;
+  min-height: 100vh;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+// Left Side - Form (20%)
+.mongodb-auth-left {
+  flex: 0 0 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--auth-bg-primary);
+
+  @media (max-width: 768px) {
+    order: 1;
+    flex: none;
+    min-height: 100vh;
+    padding: 1.5rem;
+  }
+}
+
+.mongodb-auth-content {
+  width: 100%;
+  max-width: 350px;
+}
+
+// Right Side - Visual (80%)
+.mongodb-auth-right {
+  flex: 0 0 80%;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    order: 0;
+    flex: none;
+    min-height: 50vh;
+  }
+}
+
+// Full Image Background
+.mongodb-full-image {
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://placehold.co/1600x1200/336EF9/FFFFFF?text=Kitchen+Management+App');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  // Subtle overlay for better visual appeal
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(235, 89, 57, 0.1) 0%, rgba(51, 110, 249, 0.1) 100%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 768px) {
+    height: 50vh;
+  }
+}
+
+// Different image for register page
+.mongodb-full-image-register {
+  background-image: url('https://placehold.co/1600x1200/EB5939/FFFFFF?text=Join+KitchenMind+Community');
+  
+  &::before {
+    background: linear-gradient(135deg, rgba(51, 110, 249, 0.1) 0%, rgba(235, 89, 57, 0.1) 100%);
+  }
+}
+
+
+// MongoDB Logo Section
+.mongodb-auth-logo {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .mongodb-logo-img {
+    height: 40px;
+    width: auto;
+  }
+
+  .mongodb-logo-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .mongodb-logo-text {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--auth-text-primary);
+    margin: 0;
+    letter-spacing: -0.025em;
+  }
+}
+
+// Welcome Section
+.mongodb-auth-welcome {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  .mongodb-welcome-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--auth-text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .mongodb-welcome-subtitle {
+    font-size: 0.95rem;
+    color: var(--auth-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+  }
+}
+
+// Social Login Section
+.mongodb-social-section {
+  margin-bottom: 1.5rem;
+
+  .tp-login-google-btn {
+    width: 100%;
+    background: var(--auth-bg-primary);
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius);
+    padding: 0.875rem 1rem;
+    font-weight: 500;
+    color: var(--auth-text-primary);
+    transition: var(--auth-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+
+    &:hover {
+      border-color: var(--auth-border-focus);
+      background: var(--auth-bg-secondary);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--auth-border-focus);
+      box-shadow: 0 0 0 3px rgba(51, 110, 249, 0.1);
+    }
+  }
+}
+
+// MongoDB Divider
+.mongodb-divider {
+  display: flex;
+  align-items: center;
+  margin: 1.5rem 0;
+
+  .mongodb-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--auth-border);
+  }
+
+  .mongodb-divider-text {
+    padding: 0 1rem;
+    color: var(--auth-text-muted);
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+}
+
+// Form Section
+.mongodb-form-section {
+  margin-bottom: 1.5rem;
+
+  .tp-form-label {
+    font-weight: 500;
+    color: var(--auth-text-primary);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .tp-form-input {
+    width: 100%;
+    padding: 0.875rem 0.75rem;
+    border: 1px solid var(--auth-border);
+    border-radius: var(--auth-radius);
+    font-size: 0.95rem;
+    transition: var(--auth-transition);
+    background: var(--auth-bg-primary);
+    color: var(--auth-text-primary);
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: var(--auth-border-focus);
+      box-shadow: 0 0 0 3px rgba(51, 110, 249, 0.1);
+    }
+
+    &::placeholder {
+      color: var(--auth-text-muted);
+    }
+  }
+
+  .tp-login-input {
+    position: relative;
+
+    .tp-login-input-eye {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--auth-text-muted);
+      transition: var(--auth-transition);
+
+      &:hover {
+        color: var(--auth-text-secondary);
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  .tp-login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+    
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+  }
+
+  .tp-login-remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .tp-form-check {
+      width: 1rem;
+      height: 1rem;
+      accent-color: var(--auth-primary);
+    }
+
+    .tp-form-check-label {
+      font-size: 0.875rem;
+      color: var(--auth-text-secondary);
+      cursor: pointer;
+    }
+  }
+
+  .tp-forgot-link {
+    color: var(--auth-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--auth-primary-hover);
+      text-decoration: underline;
+    }
+  }
+
+  .tp-btn-primary {
+    width: 100%;
+    background: var(--auth-orange);
+    border: none;
+    border-radius: var(--auth-radius);
+    padding: 0.875rem 1rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    cursor: pointer;
+    transition: var(--auth-transition);
+
+    &:hover {
+      background: var(--auth-orange-hover);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(235, 89, 57, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Terms Section
+.tp-login-terms {
+  margin: 1rem 0;
+
+  .tp-login-remember {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    .tp-form-check {
+      width: 1rem;
+      height: 1rem;
+      margin-top: 0.125rem;
+      accent-color: var(--auth-primary);
+    }
+
+    .tp-form-check-label {
+      font-size: 0.875rem;
+      color: var(--auth-text-secondary);
+      line-height: 1.4;
+      cursor: pointer;
+    }
+  }
+}
+
+// Footer Section
+.mongodb-auth-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+
+  .mongodb-signup-link {
+    font-size: 0.875rem;
+    color: var(--auth-text-secondary);
+    margin: 0;
+  }
+
+  .mongodb-link {
+    color: var(--auth-primary);
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      color: var(--auth-primary-hover);
+      text-decoration: underline;
+    }
+  }
+}
+
+// Background Decoration
+.mongodb-bg-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  .mongodb-bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(235, 89, 57, 0.03), rgba(51, 110, 249, 0.02));
+    animation: mongoFloat 20s ease-in-out infinite;
+
+    &.mongodb-bg-circle-1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      right: -150px;
+      animation-delay: 0s;
+    }
+
+    &.mongodb-bg-circle-2 {
+      width: 200px;
+      height: 200px;
+      bottom: -100px;
+      left: -100px;
+      animation-delay: -7s;
+    }
+
+    &.mongodb-bg-circle-3 {
+      width: 150px;
+      height: 150px;
+      top: 20%;
+      left: -75px;
+      animation-delay: -14s;
+    }
+  }
+}
+
+@keyframes mongoFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+// Error Messages
+.error-msg {
+  color: #E74C3C;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+// Responsive Design
+@media (max-width: 640px) {
+  .mongodb-auth-main {
+    padding: 1rem 0.5rem;
+  }
+
+  .mongodb-auth-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .mongodb-auth-logo .mongodb-logo-text {
+    font-size: 1.5rem;
+  }
+
+  .mongodb-auth-welcome .mongodb-welcome-title {
+    font-size: 1.25rem;
+  }
+}
+
+// Accessibility improvements
+.tp-form-input:focus,
+.tp-form-check:focus,
+.tp-login-google-btn:focus,
+.tp-btn-primary:focus {
+  outline: 2px solid var(--auth-border-focus);
+  outline-offset: 2px;
+}
+
+// Dark Mode Support
+[data-theme="dark"] {
+  .mongodb-auth-main {
+    background: var(--auth-bg-secondary);
+  }
+
+  .mongodb-auth-left {
+    background: var(--auth-bg-primary);
+  }
+
+  .mongodb-full-image {
+    background-image: url('https://placehold.co/1600x1200/1E1E1E/FFFFFF?text=Kitchen+Management+App');
+    
+    &::before {
+      background: linear-gradient(135deg, rgba(235, 89, 57, 0.2) 0%, rgba(51, 110, 249, 0.2) 100%);
+    }
+  }
+
+  .mongodb-full-image-register {
+    background-image: url('https://placehold.co/1600x1200/141414/FFFFFF?text=Join+KitchenMind+Community');
+    
+    &::before {
+      background: linear-gradient(135deg, rgba(51, 110, 249, 0.2) 0%, rgba(235, 89, 57, 0.2) 100%);
+    }
+  }
+}
+
+// Force dark mode text colors with higher specificity
+[data-theme="dark"],
+.dark {
+  // Welcome text
+  .mongodb-welcome-title {
+    color: #F5F7F5 !important;
+  }
+  
+  .mongodb-welcome-subtitle {
+    color: #B8B8B8 !important;
+  }
+  
+  // Form labels
+  .tp-form-label,
+  .tp-login-input-title label {
+    color: #F5F7F5 !important;
+  }
+  
+  // Divider text
+  .mongodb-divider-text {
+    color: #A0A0A0 !important;
+  }
+  
+  // Footer links
+  .mongodb-signup-link {
+    color: #B8B8B8 !important;
+  }
+  
+  // Input placeholders
+  .tp-form-input::placeholder,
+  input::placeholder {
+    color: #888888 !important;
+  }
+  
+  // Input text
+  .tp-form-input,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    color: #F5F7F5 !important;
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-color: #404040 !important;
+  }
+  
+  // Focus states
+  .tp-form-input:focus,
+  input:focus {
+    border-color: #336EF9 !important;
+    color: #F5F7F5 !important;
+  }
+  
+  // Checkbox labels
+  .tp-checkbox-label,
+  .tp-form-check-label,
+  label {
+    color: #B8B8B8 !important;
+  }
+  
+  // Any remaining text elements
+  p, span, div, label {
+    color: inherit;
+  }
+}
+
+// Reduce motion for users who prefer it
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
