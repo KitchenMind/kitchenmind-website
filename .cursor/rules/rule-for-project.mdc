@@ -1,0 +1,14 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+LUÔN kiểm tra i8n VN/EN
+Luôn kiểm tra dark/light 
+Luôn kiểm tra mobile (special)
+
+context: Mục tiêu sản phẩm :
+Xây dựng web app biến “tồn kho nhà bếp” + khẩu phần + ngân sách thành thực đơn tuần cá nhân hoá và danh sách mua sắm tự động, đồng thời nhắc hạn dùng để giảm lãng phí, tiết kiệm thời gian và chi phí. Ứng dụng hỗ trợ nhập hàng nhanh bằng ảnh/OCR, tuỳ biến kiêng kỵ/dị ứng/tôn giáo và tự động trừ kho sau khi nấu.
+Người dùng & vấn đề:
+Linh (owner) quản lý 1 tủ cho gia đình 4 người. Linh nhập hàng bằng OCR hóa đơn hoặc checkbox nhanh cho món không bao bì (thịt/cá/trứng/rau), hệ thống tự tạo lô (batch), gán zone và HSD. Linh đặt ngân sách tuần, chọn khu vực để dùng giá thị trường theo quận, khai ăn chay theo lịch từng người và dị ứng/bệnh nền để planner tránh món không phù hợp. App sinh thực đơn tuần ưu tiên đồ sắp hết hạn, tạo shopping list; khi bận, Linh đặt đi chợ hộ (phí theo khoảng cách, tối thiểu đơn). Trong tuần, Linh nấu món → app trừ tồn theo FEO; app nhắc HSD mỗi sáng và vẫn cho xem pantry/plan, tick list offline (đồng bộ lại khi có mạng). Cuối tuần, Linh xem báo cáo: đã dùng trước HSD, lãng phí, chi tiêu ước vs thực — rồi tạo danh sách mua cho tuần mới.

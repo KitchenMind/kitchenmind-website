@@ -1,0 +1,244 @@
+/* Mobile Responsive Fixes */
+
+/* Global Text Overflow Fixes */
+* {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  hyphens: auto;
+  line-height: 1.3;
+}
+
+/* Touch Target Improvements */
+@media (max-width: 768px) {
+  /* Minimum touch target size */
+  button, .btn, a[role="button"], input[type="button"], input[type="submit"] {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+  }
+  
+  /* Footer Responsive Fixes */
+  .tp-footer-2-area {
+    padding-top: 60px !important;
+    padding-bottom: 40px !important;
+    
+    .row {
+      > [class*="col-"] {
+        margin-bottom: 40px;
+      }
+    }
+    
+    .tp-footer-2-widget-title {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    
+    .tp-footer-2-widget-text p {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    
+    .tp-footer-2-contact-item span {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    
+    .tp-footer-2-input {
+      input {
+        font-size: 14px;
+        padding: 12px 50px 12px 16px;
+      }
+      
+      button {
+        width: 44px;
+        height: 44px;
+      }
+    }
+  }
+  
+  /* Copyright area */
+  .tp-copyright-2-area {
+    padding: 20px 0;
+    
+    .tp-copyright-2-left p {
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+    
+    .tp-copyright-2-social {
+      li {
+        display: inline-block;
+        margin: 0 10px 5px 0;
+        
+        a {
+          font-size: 14px;
+          padding: 8px 12px;
+          min-width: 44px;
+          min-height: 44px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  
+  /* Portfolio Grid Fixes */
+  .tp-project-5-2-area {
+    .row.grid {
+      [class*="col-xl-4"],
+      [class*="col-xl-3"],
+      [class*="col-xl-6"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  
+  /* Masonry Grid Fixes */
+  .pm-project-masonary-area {
+    .row.grid-2 {
+      [class*="col-xl-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  
+  /* Service Grid Fixes */
+  .tp-service-area {
+    .row {
+      [class*="col-xl-4"],
+      [class*="col-lg-4"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  
+  /* Team Grid Fixes */
+  .tp-team-area {
+    .row {
+      [class*="col-xl-3"],
+      [class*="col-lg-6"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  
+  /* Pricing Grid Fixes */
+  .tp-price-area {
+    .row {
+      [class*="col-xl-4"],
+      [class*="col-lg-4"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+  }
+  
+  /* Brand Grid Fixes */
+  .tp-brand-area {
+    .row {
+      [class*="col-xl-2"],
+      [class*="col-lg-3"],
+      [class*="col-md-4"] {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  
+  /* Image Responsive Fixes */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Container padding fixes */
+  .container,
+  [class*="container-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  /* Typography responsive */
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 24px !important; }
+  h3 { font-size: 20px !important; }
+  h4 { font-size: 18px !important; }
+  h5 { font-size: 16px !important; }
+  h6 { font-size: 14px !important; }
+  
+  /* Button responsive */
+  .tp-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+  
+  /* Navigation fixes */
+  .tp-header-area {
+    padding: 10px 0;
+    
+    .tp-header-logo img {
+      max-width: 120px;
+      height: auto;
+    }
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .container,
+  [class*="container-"] {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  /* Typography extra small */
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 18px !important; }
+  h4 { font-size: 16px !important; }
+  
+  /* Brand grid - single column on very small screens */
+  .tp-brand-area .row [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  /* Footer extra small */
+  .tp-footer-2-area {
+    padding-top: 40px !important;
+    
+    .tp-footer-2-widget-title {
+      font-size: 16px;
+    }
+    
+    .tp-footer-2-widget-text p {
+      font-size: 13px;
+    }
+  }
+}
+
+/* Landscape mobile fixes */
+@media (max-width: 768px) and (orientation: landscape) {
+  .tp-app-download-glass-card {
+    padding: 30px 20px;
+  }
+  
+  .tp-app-download-main-title {
+    font-size: 24px !important;
+  }
+}
