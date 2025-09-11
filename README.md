@@ -1,37 +1,217 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KitchenMind Website
 
-## Getting Started
+KitchenMind là ứng dụng web thông minh giúp gia đình quản lý tồn kho nhà bếp, tạo thực đơn tuần cá nhân hóa và tiết kiệm chi phí. Ứng dụng hỗ trợ quét OCR hóa đơn, nhắc nhở hạn sử dụng và tối ưu hóa ngân sách mua sắm.
 
-First, run the development server:
+## Tính năng chính
+
+- **Quản lý tồn kho thông minh**: Theo dõi thực phẩm trong nhà bếp với OCR scanning
+- **Thực đơn tuần cá nhân hóa**: Tạo menu dựa trên tồn kho và sở thích gia đình
+- **Nhắc nhở hạn sử dụng**: Giảm lãng phí thực phẩm với hệ thống cảnh báo
+- **Tối ưu ngân sách**: Quản lý chi phí mua sắm theo khu vực
+- **Đa ngôn ngữ**: Hỗ trợ Tiếng Việt và Tiếng Anh
+- **Dark/Light Mode**: Giao diện tùy chỉnh theo sở thích
+- **Mobile App**: Ứng dụng di động với Capacitor
+
+## Công nghệ sử dụng
+
+- **Frontend**: Next.js 14, React 18, TypeScript
+- **Styling**: SCSS, Bootstrap 5
+- **Animation**: GSAP, ScrollTrigger
+- **Form Handling**: React Hook Form + Yup
+- **Theme**: next-themes
+- **Mobile**: Capacitor (Android)
+- **Icons**: Phosphor Icons, Heroicons
+- **Images**: Placeholder.co, Unsplash
+
+## Yêu cầu hệ thống
+
+- Node.js >= 18.0.0
+- npm >= 8.0.0
+- Git
+
+## Cài đặt
+
+### 1. Clone repository
+
+```bash
+git clone git@github.com:KitchenMind/kitchenmind-website.git
+cd kitchenmind-website
+```
+
+### 2. Cài đặt dependencies
+
+```bash
+npm install
+```
+
+### 3. Chạy development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở [http://localhost:3000](http://localhost:3000) để xem ứng dụng.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts có sẵn
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+# Development
+npm run dev          # Chạy development server
+npm run build        # Build cho production
+npm run start        # Chạy production server
+npm run lint         # Kiểm tra linting
 
-## Learn More
+# Mobile (Android)
+npm run build:mobile     # Build cho mobile
+npm run cap:add:android  # Thêm Android platform
+npm run cap:copy         # Copy web assets
+npm run cap:sync         # Sync với native code
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Cấu trúc dự án
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── (about)/           # About pages
+│   ├── (blog)/            # Blog pages
+│   ├── (contact)/         # Contact pages
+│   ├── (homes)/           # Home pages
+│   ├── (portfolio)/       # Portfolio pages
+│   ├── (service)/         # Service pages
+│   ├── (shop)/            # Shop pages
+│   ├── (team)/            # Team pages
+│   ├── account/           # Account pages
+│   ├── login/             # Login page
+│   ├── register/          # Register page
+│   └── layout.tsx         # Root layout
+├── components/            # Reusable components
+│   ├── about/             # About components
+│   ├── blog/              # Blog components
+│   ├── contact/           # Contact components
+│   ├── form/              # Form components
+│   ├── hero-banner/       # Hero banner components
+│   ├── portfolio/         # Portfolio components
+│   ├── pricing/           # Pricing components
+│   ├── service/           # Service components
+│   ├── shop/              # Shop components
+│   └── ui/                # UI components
+├── contexts/              # React contexts
+│   └── app-context.tsx    # Main app context
+├── data/                  # Static data
+├── hooks/                 # Custom hooks
+├── layouts/               # Layout components
+│   ├── footers/           # Footer layouts
+│   └── headers/           # Header layouts
+├── pages/                 # Page components
+├── plugins/               # Third-party plugins
+├── styles/                # Global styles
+├── types/                 # TypeScript types
+└── utils/                 # Utility functions
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Tính năng đa ngôn ngữ
 
-## Deploy on Vercel
+Ứng dụng hỗ trợ 2 ngôn ngữ:
+- **Tiếng Việt** (mặc định)
+- **Tiếng Anh**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Chuyển đổi ngôn ngữ thông qua:
+- URL parameter: `?lang=en`
+- Language switcher component
+- LocalStorage persistence
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-"# kitchenmind-website" 
+## Dark/Light Mode
+
+Hỗ trợ 2 chế độ giao diện:
+- **Light Mode** (mặc định)
+- **Dark Mode**
+
+Theme được lưu trong localStorage và tự động khôi phục.
+
+## Mobile Development
+
+### Android Setup
+
+1. Cài đặt Android Studio
+2. Cấu hình Android SDK
+3. Thêm Android platform:
+
+```bash
+npm run cap:add:android
+```
+
+4. Build và sync:
+
+```bash
+npm run build:mobile
+npm run cap:sync
+```
+
+5. Mở trong Android Studio:
+
+```bash
+npx cap open android
+```
+
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push code lên GitHub
+2. Kết nối repository với Vercel
+3. Deploy tự động
+
+### Manual Build
+
+```bash
+npm run build
+npm run start
+```
+
+## Environment Variables
+
+Tạo file `.env.local`:
+
+```env
+# Next.js
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# API Keys (nếu cần)
+NEXT_PUBLIC_API_URL=your_api_url
+```
+
+## Contributing
+
+1. Fork repository
+2. Tạo feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push branch: `git push origin feature/amazing-feature`
+5. Tạo Pull Request
+
+## Commit Convention
+
+Sử dụng format: `<type>: <description>`
+
+Types:
+- `feat`: Thêm tính năng mới
+- `fix`: Sửa lỗi
+- `docs`: Cập nhật documentation
+- `style`: Formatting, không thay đổi logic
+- `refactor`: Refactor code
+- `test`: Thêm/sửa tests
+- `chore`: Cập nhật build tools, dependencies
+
+## License
+
+Dự án này thuộc về KitchenMind Team.
+
+## Liên hệ
+
+- Website: [KitchenMind](https://kitchenmind.com)
+- Email: contact@kitchenmind.com
+- GitHub: [KitchenMind/kitchenmind-website](https://github.com/KitchenMind/kitchenmind-website)
+
+---
+
+**KitchenMind** - Smart Kitchen Planning for Modern Families
