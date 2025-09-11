@@ -266,15 +266,22 @@ const AppDownload = () => {
         
         {/* 3D Smartphone Mockup */}
         <div className="row justify-content-center mt-5">
-          <div className="col-xl-6 col-lg-8">
+          <div className="col-xl-6 col-lg-8 col-md-10 col-sm-12">
             <div className="tp-app-download-mockup text-center">
               <div className="tp-smartphone-3d tp_fade_bottom">
                 <Image 
-                  src="https://placehold.co/350x700/FF6A00/FFFFFF?text=KitchenMind+Dashboard&font=roboto" 
+                  src="/assets/img/home-02/mockup/iphone-2.png" 
                   alt="KitchenMind App Dashboard"
-                  width={350}
-                  height={700}
                   className="tp-smartphone-image tp-zoom-in"
+                  width={1000}
+                  height={800}
+                  style={{ 
+                    width: '100%', 
+                    height: 'auto', 
+                    display: 'block',
+                    maxWidth: '400px',
+                    margin: '0 auto'
+                  }}
                 />
               </div>
             </div>

@@ -85,9 +85,7 @@ const HomeTwoMain = () => {
             <ProjectTwo/>
             {/* project area */}
 
-            {/* award area */}
-            <AwardTwo/>
-            {/* award area */}
+        
 
             {/* line text area */}
             <LineText/>
