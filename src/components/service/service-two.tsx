@@ -1,7 +1,6 @@
-import React from "react";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { Leaf } from "../svg";
-import Image from "next/image";
 // service icon
 import ser_1 from "@/assets/img/home-02/service/sv-icon-1.png";
 import ser_2 from "@/assets/img/home-02/service/sv-icon-2.png";
@@ -22,7 +21,7 @@ export default function ServiceTwo() {
     title: 'Tính năng cốt lõi cho gia đình bận rộn'
   };
   return (
-    <div className="tp-service-2-area tp-service-2-pt  pb-150 z-index-5">
+    <div className="tp-service-2-area pb-150 z-index-5">
       <div className="container container-1480">
         <div className="row">
           <div className="col-xl-8">
@@ -86,7 +85,7 @@ export default function ServiceTwo() {
   );
 }
 
-const getServiceAccordion = (lang) => [
+const getServiceAccordion = (lang :any) => [
   {
     id: 1,
     icon: ser_1,
