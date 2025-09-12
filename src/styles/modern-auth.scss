@@ -199,6 +199,138 @@
 
 }
 
+// Image Overlay Content
+.mongodb-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+}
+
+.mongodb-overlay-content {
+  text-align: center;
+  max-width: 600px;
+  color: white;
+
+  @media (max-width: 768px) {
+    max-width: 400px;
+  }
+}
+
+.mongodb-overlay-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 992px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+}
+
+.mongodb-overlay-subtitle {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+  }
+}
+
+.mongodb-overlay-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+  }
+}
+
+.mongodb-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  min-width: 280px;
+  justify-content: flex-start;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    min-width: 250px;
+    padding: 0.6rem 1.25rem;
+    gap: 0.6rem;
+  }
+
+  @media (max-width: 480px) {
+    min-width: 220px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+.mongodb-feature-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+
+  @media (max-width: 768px) {
+    font-size: 1.25rem;
+  }
+}
+
+.mongodb-feature-text {
+  font-size: 1rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+  }
+}
+
 // Different image for register page
 .mongodb-full-image-register {
   background-image: url('/assets/img/background/bg-full.png');
@@ -654,16 +786,97 @@
   }
 
   .mongodb-full-image-register {
-    background-image: url('https://placehold.co/1600x1200/141414/FFFFFF?text=Join+KitchenMind+Community');
-    
+    background-image: url('/assets/img/background/bg-full.png');
+
     // Medium screens - different dark register image
     @media (max-width: 1024px) and (min-width: 768px) {
-      background-image: url('https://placehold.co/1200x1600/0F0F0F/FFFFFF?text=Join+KitchenMind+Dark+Mobile');
+      background-image: url('/assets/img/background/bg-mobile.png');
     }
-    
+
     &::before {
       background: linear-gradient(135deg, rgba(51, 110, 249, 0.2) 0%, rgba(235, 89, 57, 0.2) 100%);
     }
+  }
+
+  // Dark theme overlay adjustments
+  .mongodb-image-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
+  }
+
+  .mongodb-overlay-title {
+    color: #F5F7F5 !important;
+  }
+
+  .mongodb-overlay-subtitle {
+    color: #E0E0E0 !important;
+  }
+
+  .mongodb-feature-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .mongodb-feature-text {
+    color: #F0F0F0 !important;
+  }
+}
+
+// Also support .dark class for overlay content
+.dark {
+  .mongodb-full-image {
+    background-image: url('/assets/img/background/bg-full.png');
+
+    // Medium screens - different dark image
+    @media (max-width: 1024px) and (min-width: 768px) {
+      background-image: url('/assets/img/background/bg-mobile.png');
+    }
+
+    &::before {
+      background: linear-gradient(135deg, rgba(235, 89, 57, 0.2) 0%, rgba(51, 110, 249, 0.2) 100%);
+    }
+  }
+
+  .mongodb-full-image-register {
+    background-image: url('/assets/img/background/bg-full.png');
+
+    // Medium screens - different dark register image
+    @media (max-width: 1024px) and (min-width: 768px) {
+      background-image: url('/assets/img/background/bg-mobile.png');
+    }
+
+    &::before {
+      background: linear-gradient(135deg, rgba(51, 110, 249, 0.2) 0%, rgba(235, 89, 57, 0.2) 100%);
+    }
+  }
+
+  // Dark theme overlay adjustments
+  .mongodb-image-overlay {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.8) 100%);
+  }
+
+  .mongodb-overlay-title {
+    color: #F5F7F5 !important;
+  }
+
+  .mongodb-overlay-subtitle {
+    color: #E0E0E0 !important;
+  }
+
+  .mongodb-feature-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .mongodb-feature-text {
+    color: #F0F0F0 !important;
   }
 }
 
