@@ -1,19 +1,15 @@
 "use client";
-import { gsap } from "gsap";
-import React from "react";
-import Link from "next/link";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
 import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
+import { gsap } from "gsap";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import Wrapper from "@/layouts/wrapper";
-import HeaderTwelve from "@/layouts/headers/header-twelve";
-import FooterTwo from "@/layouts/footers/footer-two";
+import logo from "@/assets/img/logo/logo.png";
 import RegisterForm from "@/components/form/register-form";
 import SocialLogin from "@/components/form/social-login";
 import ThemeSetting from "@/components/theme-setting";
-import logo from "@/assets/img/logo/logo.png";
 
 // Import necessary
 import { useSearchParams } from "next/navigation";
@@ -101,6 +97,39 @@ const RegisterMain = () => {
           <div className="mongodb-auth-right">
             <div className="mongodb-full-image mongodb-full-image-register">
               {/* Background image will be set via CSS */}
+              <div className="mongodb-image-overlay">
+                <div className="mongodb-overlay-content">
+                  <h2 className="mongodb-overlay-title">
+                    {lang === 'en' ? 'Join KitchenMind Today' : 'Tham gia KitchenMind ngay hôm nay'}
+                  </h2>
+                  <p className="mongodb-overlay-subtitle">
+                    {lang === 'en'
+                      ? 'Start your culinary journey with thousands of recipes and cooking enthusiasts.'
+                      : 'Bắt đầu hành trình ẩm thực với hàng ngàn công thức và người đam mê nấu ăn.'
+                    }
+                  </p>
+                  <div className="mongodb-overlay-features">
+                    <div className="mongodb-feature-item">
+                      <span className="mongodb-feature-icon">🎯</span>
+                      <span className="mongodb-feature-text">
+                        {lang === 'en' ? 'Personalized Experience' : 'Trải nghiệm cá nhân hóa'}
+                      </span>
+                    </div>
+                    <div className="mongodb-feature-item">
+                      <span className="mongodb-feature-icon">⭐</span>
+                      <span className="mongodb-feature-text">
+                        {lang === 'en' ? 'Save Favorite Recipes' : 'Lưu công thức yêu thích'}
+                      </span>
+                    </div>
+                    <div className="mongodb-feature-item">
+                      <span className="mongodb-feature-icon">🔒</span>
+                      <span className="mongodb-feature-text">
+                        {lang === 'en' ? 'Secure & Private' : 'An toàn & Riêng tư'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

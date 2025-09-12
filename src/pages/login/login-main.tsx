@@ -1,19 +1,15 @@
 "use client";
-import { gsap } from "gsap";
-import React from "react";
-import Link from "next/link";
 import useScrollSmooth from "@/hooks/use-scroll-smooth";
 import { ScrollSmoother, ScrollTrigger, SplitText } from "@/plugins";
+import { gsap } from "gsap";
+import Link from "next/link";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import Wrapper from "@/layouts/wrapper";
-import HeaderTwelve from "@/layouts/headers/header-twelve";
-import FooterTwo from "@/layouts/footers/footer-two";
-import SocialLogin from "@/components/form/social-login";
-import LoginForm from "@/components/form/login-form";
-import ThemeSetting from "@/components/theme-setting";
 import logo from "@/assets/img/logo/logo.png";
+import LoginForm from "@/components/form/login-form";
+import SocialLogin from "@/components/form/social-login";
+import ThemeSetting from "@/components/theme-setting";
 
 // Import necessary
 import { useSearchParams } from "next/navigation";
@@ -97,6 +93,39 @@ const LoginMain = () => {
           <div className="mongodb-auth-right">
             <div className="mongodb-full-image">
               {/* Background image will be set via CSS */}
+              <div className="mongodb-image-overlay">
+                <div className="mongodb-overlay-content">
+                  <h2 className="mongodb-overlay-title">
+                    {lang === 'en' ? 'Welcome to KitchenMind' : 'Chào mừng đến với KitchenMind'}
+                  </h2>
+                  <p className="mongodb-overlay-subtitle">
+                    {lang === 'en'
+                      ? 'Discover amazing recipes and cooking tips from our community of food lovers.'
+                      : 'Khám phá những công thức nấu ăn tuyệt vời và mẹo vặt từ cộng đồng yêu ẩm thực.'
+                    }
+                  </p>
+                  <div className="mongodb-overlay-features">
+                    <div className="mongodb-feature-item">
+                      <span className="mongodb-feature-icon">🍳</span>
+                      <span className="mongodb-feature-text">
+                        {lang === 'en' ? 'Smart Recipe Suggestions' : 'Gợi ý công thức thông minh'}
+                      </span>
+                    </div>
+                    <div className="mongodb-feature-item">
+                      <span className="mongodb-feature-icon">👥</span>
+                      <span className="mongodb-feature-text">
+                        {lang === 'en' ? 'Community Sharing' : 'Chia sẻ cộng đồng'}
+                      </span>
+                    </div>
+                    <div className="mongodb-feature-item">
+                      <span className="mongodb-feature-icon">📱</span>
+                      <span className="mongodb-feature-text">
+                        {lang === 'en' ? 'Mobile Friendly' : 'Thân thiện di động'}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
