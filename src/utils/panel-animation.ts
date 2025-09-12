@@ -1,6 +1,6 @@
+import { ScrollTrigger } from "@/plugins";
 import { gsap } from "gsap";
 import $ from "jquery";
-import { ScrollTrigger } from "@/plugins";
 
 function panelOneAnimation() {
   let pp = gsap.matchMedia();
@@ -32,7 +32,8 @@ function panelOneAnimation() {
         scrollTrigger: {
           trigger: panelsContainer,
           pin: true,
-          start: "top 140",
+          
+          start: "top 0",
           scrub: 1,
           end: (st: any) => "+=" + (st.vars.trigger.offsetWidth - innerWidth),
         },
@@ -114,7 +115,7 @@ function studioPanel() {
         scrollTrigger: {
           trigger: panelsContainer,
           pin: true,
-          pinSpacing: true,
+          pinSpacing: false,
           start: "top 0",
           scrub: 1,
           end: (st) => "+=" + totalPanelsWidth,
@@ -167,4 +168,5 @@ function servicePanel() {
 
 
 
-export { panelOneAnimation, panelTwoAnimation, studioPanel,servicePanel };
+export { panelOneAnimation, panelTwoAnimation, servicePanel, studioPanel };
+
