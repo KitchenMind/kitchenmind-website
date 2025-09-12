@@ -22,7 +22,7 @@ const LoginMain = () => {
   const lang = useSearchParams()?.get('lang') || 'vi';
   const texts = lang === 'en' 
     ? { 
-        title: 'Welcome Back to KitchenMind', 
+      
     
         noAccount: "Don't have an account?", 
         signUp: 'Create Account', 
@@ -30,7 +30,6 @@ const LoginMain = () => {
         backToHome: 'Back to Home'
       } 
     : { 
-        title: 'Chào Mừng Trở Lại KitchenMind', 
      
         noAccount: 'Chưa có tài khoản?', 
         signUp: 'Tạo Tài Khoản', 
@@ -67,10 +66,6 @@ const LoginMain = () => {
               </div>
 
               {/* Welcome Text */}
-              <div className="mongodb-auth-welcome">
-                <h2 className="mongodb-welcome-title">{texts.title}</h2>
-
-              </div>
 
               {/* Social Login */}
               <div className="mongodb-social-section">

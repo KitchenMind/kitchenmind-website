@@ -13,6 +13,7 @@ import FooterTwo from "@/layouts/footers/footer-two";
 import RegisterForm from "@/components/form/register-form";
 import SocialLogin from "@/components/form/social-login";
 import ThemeSetting from "@/components/theme-setting";
+import logo from "@/assets/img/logo/logo.png";
 
 // Import necessary
 import { useSearchParams } from "next/navigation";
@@ -22,7 +23,7 @@ const RegisterMain = () => {
   const texts = lang === 'en' 
     ? { 
         title: 'Create Your KitchenMind Account', 
-        subtitle: 'Join us to start managing your kitchen smartly',
+
         haveAccount: "Already have an account?", 
         signIn: 'Sign In', 
         or: 'Or continue with email',
@@ -30,7 +31,7 @@ const RegisterMain = () => {
       } 
     : { 
         title: 'Tạo Tài Khoản KitchenMind', 
-        subtitle: 'Bắt đầu hành trình quản lý nhà bếp thông minh',
+
         haveAccount: 'Đã có tài khoản?', 
         signIn: 'Đăng Nhập', 
         or: 'Hoặc tiếp tục với email',
@@ -62,13 +63,12 @@ const RegisterMain = () => {
 
               {/* Logo Section */}
               <div className="mongodb-auth-logo">
-                <img src="https://placehold.co/120x40?text=KitchenMind&bg=FF6A00&color=white" alt="KitchenMind" className="mongodb-logo-img" />
+                <img src={logo.src} alt="KitchenMind" className="mongodb-logo-img" />
               </div>
 
               {/* Welcome Text */}
               <div className="mongodb-auth-welcome">
                 <h2 className="mongodb-welcome-title">{texts.title}</h2>
-                <p className="mongodb-welcome-subtitle">{texts.subtitle}</p>
               </div>
 
               {/* Social Login */}
