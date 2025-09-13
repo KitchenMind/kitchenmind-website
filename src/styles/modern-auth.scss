@@ -333,11 +333,11 @@
 
 // Different image for register page
 .mongodb-full-image-register {
-  background-image: url('/assets/img/background/bg-full.png');
+  background-image: url('https://res.cloudinary.com/dacbvhtgz/image/upload/v1757760889/bg-full_ud94qy.png');
 
   // Medium screens - different register image
   @media (max-width: 1024px) and (min-width: 768px) {
-    background-image: url('/assets/img/background/bg-mobile.png');
+    background-image: url('https://res.cloudinary.com/dacbvhtgz/image/upload/v1757760889/bg-mobile_kye59s.png');
   }
   
   &::before {
