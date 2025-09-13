@@ -1,7 +1,7 @@
 'use client';
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export type Language = 'vi' | 'en';
 
@@ -74,7 +74,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
     }
     
     // Update URL
-    const params = new URLSearchParams(searchParams?.toString());
+    const params = new URLSearchParams(searchParams?.toString() || '');
     if (lang === 'vi') {
       params.delete('lang');
     } else {

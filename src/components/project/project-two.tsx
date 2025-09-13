@@ -1,10 +1,9 @@
 "use client";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
-const getProjectData = (lang) => [
+const getProjectData = (lang: string) => [
   {
     id: 1,
     img: "/assets/img/home-02/project/project-1.jpg",
