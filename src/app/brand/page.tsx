@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import BrandMain from "@/pages/brand/brand-main";
+import SuspenseWrapper from "@/components/suspense-wrapper";
 
 export const metadata: Metadata = {
   title: "Liko - Brand page",
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 
 const BrandPage = () => {
   return (
-    <BrandMain/>
+    <SuspenseWrapper>
+      <BrandMain/>
+    </SuspenseWrapper>
   );
 };
 

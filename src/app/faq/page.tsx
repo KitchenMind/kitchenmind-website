@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import FaqMain from "@/pages/faq/faq-main";
+import SuspenseWrapper from "@/components/suspense-wrapper";
 
 export const metadata: Metadata = {
   title: "Liko - Faq page",
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 
 const FaqPage = () => {
   return (
-    <FaqMain/>
+    <SuspenseWrapper>
+      <FaqMain/>
+    </SuspenseWrapper>
   );
 };
 

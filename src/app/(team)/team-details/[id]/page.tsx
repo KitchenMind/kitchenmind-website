@@ -1,7 +1,6 @@
-import React from "react";
-import { Metadata } from "next";
-import TeamDetailsMain from "@/pages/team/team-details";
 import team_data from "@/data/team-data";
+import TeamDetailsMain from "@/pages/team/team-details";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Liko - Team Details page",
@@ -9,9 +8,11 @@ export const metadata: Metadata = {
 
 // Generate static params for static export
 export async function generateStaticParams() {
-  return team_data.map((team) => ({
-    id: team.id.toString(),
-  }));
+  return team_data
+    .filter((team) => team && team.id)
+    .map((team) => ({
+      id: team.id.toString(),
+    }));
 }
 
 export default function TeamDetailsPage({params}: {params: { id: string }}) {

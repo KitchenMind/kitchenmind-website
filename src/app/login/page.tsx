@@ -1,6 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import LoginMain from "@/pages/login/login-main";
+import SuspenseWrapper from "@/components/suspense-wrapper";
 
 export const metadata: Metadata = {
   title: "Liko - Login page",
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 
 const LoginPage = () => {
   return (
-    <LoginMain/>
+    <SuspenseWrapper>
+      <LoginMain/>
+    </SuspenseWrapper>
   );
 };
 
