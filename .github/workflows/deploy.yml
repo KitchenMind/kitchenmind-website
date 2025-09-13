@@ -8,10 +8,14 @@ on:
     branches:
       - main
 
+
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [18.x, 20.x]
@@ -49,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
+
 
     steps:
       - name: Checkout code
@@ -73,11 +77,11 @@ jobs:
   #   runs-on: ubuntu-latest
   #   needs: build
   #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-  #   
+  #
   #   steps:
   #     - name: Checkout code
   #       uses: actions/checkout@v4
-  #     
+  #
   #     - name: Deploy to Vercel
   #       uses: amondnet/vercel-action@v25
   #       with:
@@ -91,17 +95,17 @@ jobs:
   #   runs-on: ubuntu-latest
   #   needs: build
   #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-  #   
+  #
   #   steps:
   #     - name: Checkout code
   #       uses: actions/checkout@v4
-  #     
+  #
   #     - name: Download build artifacts
   #       uses: actions/download-artifact@v4
   #       with:
   #         name: nextjs-build-20.x
   #         path: .next/
-  #     
+  #
   #     - name: Deploy to Server
   #       env:
   #         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
