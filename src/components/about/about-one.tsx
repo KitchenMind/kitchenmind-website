@@ -1,7 +1,8 @@
 'use client';
 import Image from 'next/image';
 import { useSearchParams } from "next/navigation";
-import { CSSProperties } from 'react';
+import { CSSProperties, Suspense } from 'react';
+import { Leaf } from '../svg';
 // images
 import ab_1 from '@/assets/img/home-02/about/ab-1.jpg';
 import ab_2 from '@/assets/img/home-02/about/ab-2.jpg';
@@ -9,7 +10,8 @@ import ab_3 from '@/assets/img/home-02/about/ab-s.jpg';
 
 // img style
 const imgStyle:CSSProperties = {height: "auto"};
-const AboutOne = () => {
+
+const AboutOneContent = () => {
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
   const texts = lang === 'en' ? {
@@ -31,30 +33,25 @@ const AboutOne = () => {
       <div className="container container-1480">
         <div className="row justify-content-center">
           <div className="col-xxl-8 col-xl-10">
-            <div className="tp-about-2-title-box tp-btn-trigger tp-btn-bounce mb-70 text-start text-xl-center">
+            <div className="tp-about-2-title-box tp-btn-trigger tp-btn-bounce mb-70 text-center">
+              <span className="tp-section-subtitle-3 mb-15">
+                <span>
+                  <Leaf />
+                </span>
+                {texts.tagline}
+              </span>
               <h2 className="tp-about-2-section-title">
                 {texts.title}
               </h2>
             </div>
           </div>
         </div>
-        <div className="row align-items-center">
-          <div className="col-xl-5 col-lg-6 col-md-6 order-1 order-xl-0">
-            <div className="tp-about-2-thumb-box p-relative">
-              <div className="tp-about-2-thumb-main">
-                <Image data-speed="auto" data-lag="0" src={ab_1} alt="ab-img" style={imgStyle} />
-              </div>
-              <div className="tp-about-2-thumb-inner">
-                <Image data-speed="auto" data-lag="0" src={ab_2} alt="ab-img" style={imgStyle} />
-                <span className="tp-about-2-thumb-text">
-                  {texts.tagline}
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-5 col-lg-12 order-0 order-xl-1">
-            <div className="tp-about-2-content">
-              <span className="tp-about-2-content-subtitle">
+
+        {/* New Grid Layout Design */}
+        <div className="row">
+          <div className="col-xl-8 col-lg-8">
+            <div className="tp-about-2-content mb-50">
+              <span className="tp-about-2-content-subtitle mb-25">
                 {texts.follow}
               </span>
               <p className="mb-30">
@@ -65,14 +62,48 @@ const AboutOne = () => {
               </p>
             </div>
           </div>
-          <div className="col-xl-2 col-lg-6 col-md-6 order-1">
-            <div className="tp-about-2-right-thumb text-end">
-              <Image data-speed="auto" data-lag="0" src={ab_3} alt="ab-img" style={imgStyle} />
+          <div className="col-xl-4 col-lg-4">
+            <div className="tp-about-2-feature-box">
+              <div className="tp-about-2-feature-item mb-30">
+                <div className="tp-about-2-feature-icon">
+                  <Image src={ab_1} alt="feature-1" style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%'}} />
+                </div>
+                <div className="tp-about-2-feature-content">
+                  <h5>{lang === 'en' ? 'Smart Inventory' : 'Tồn kho thông minh'}</h5>
+                  <p>{lang === 'en' ? 'Track expiry dates automatically' : 'Theo dõi hạn sử dụng tự động'}</p>
+                </div>
+              </div>
+              <div className="tp-about-2-feature-item mb-30">
+                <div className="tp-about-2-feature-icon">
+                  <Image src={ab_2} alt="feature-2" style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%'}} />
+                </div>
+                <div className="tp-about-2-feature-content">
+                  <h5>{lang === 'en' ? 'Menu Planning' : 'Lập kế hoạch thực đơn'}</h5>
+                  <p>{lang === 'en' ? 'Personalized weekly menus' : 'Thực đơn tuần cá nhân hóa'}</p>
+                </div>
+              </div>
+              <div className="tp-about-2-feature-item">
+                <div className="tp-about-2-feature-icon">
+                  <Image src={ab_3} alt="feature-3" style={{width: '60px', height: '60px', objectFit: 'cover', borderRadius: '50%'}} />
+                </div>
+                <div className="tp-about-2-feature-content">
+                  <h5>{lang === 'en' ? 'Budget Control' : 'Kiểm soát ngân sách'}</h5>
+                  <p>{lang === 'en' ? 'Save money, reduce waste' : 'Tiết kiệm tiền, giảm lãng phí'}</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  );
+};
+
+const AboutOne = () => {
+  return (
+    <Suspense fallback={null}>
+      <AboutOneContent />
+    </Suspense>
   );
 };
 

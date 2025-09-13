@@ -1,6 +1,5 @@
-import React from "react";
-import { Metadata } from "next";
 import AboutMeMain from "@/pages/about/about-me";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Liko - About us page",

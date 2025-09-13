@@ -5,7 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
     // domains can be removed if you no longer use placehold.co
-    domains: ['placehold.co'], 
+    domains: ['placehold.co'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,6 +17,9 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  }
 };
 
 export default nextConfig;

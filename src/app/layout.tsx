@@ -1,15 +1,15 @@
+import LanguageSwitcher from "@/components/language-switcher";
+import { AppProviderWrapper } from "@/contexts/app-provider-wrapper";
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import {
-  Be_Vietnam_Pro,
-  Aladin,
-  Big_Shoulders_Display,
-  Marcellus,
+    Aladin,
+    Be_Vietnam_Pro,
+    Big_Shoulders_Display,
+    Marcellus,
 } from "next/font/google";
 import localFont from "next/font/local";
-import { ThemeProvider } from "next-themes";
 import "./globals.scss";
-import LanguageSwitcher from "@/components/language-switcher";
-import { AppProvider } from "@/contexts/app-context";
 
 const gellery = localFont({
   src: [
@@ -93,10 +93,10 @@ export default function RootLayout({
           disableTransitionOnChange={false}
           enableColorScheme={true}
         >
-          <AppProvider>
+          <AppProviderWrapper>
             {children}
             <LanguageSwitcher/>
-          </AppProvider>
+          </AppProviderWrapper>
         </ThemeProvider>
       </body>
     </html>

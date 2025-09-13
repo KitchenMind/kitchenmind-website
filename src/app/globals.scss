@@ -1,6 +1,52 @@
 @import "~bootstrap/scss/bootstrap";
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
-@import "swiper/css/bundle"; 
+@import "swiper/css/bundle";
 @import '../../public/assets/scss/main.scss';
 @import '../styles/mobile-responsive-fixes.scss';
 @import '../styles/modern-auth.scss';
+
+/* Custom styles for new about section design */
+.tp-about-2-feature-box {
+  .tp-about-2-feature-item {
+    display: flex;
+    align-items: center;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .tp-about-2-feature-icon {
+      margin-right: 20px;
+      flex-shrink: 0;
+
+      img {
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+    }
+
+    .tp-about-2-feature-content {
+      h5 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #fff;
+      }
+
+      p {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0;
+        line-height: 1.4;
+      }
+    }
+  }
+}

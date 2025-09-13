@@ -12,11 +12,11 @@ import SocialLogin from "@/components/form/social-login";
 import ThemeSetting from "@/components/theme-setting";
 
 // Import necessary
-import { useSearchParams } from "next/navigation";
+import { useLanguage } from "@/hooks/use-language";
 
 const LoginMain = () => {
-  const lang = useSearchParams()?.get('lang') || 'vi';
-  const texts = lang === 'en' 
+  const { currentLang } = useLanguage();
+  const texts = currentLang === 'en'
     ? { 
       
     
@@ -50,7 +50,7 @@ const LoginMain = () => {
             <div className="mongodb-auth-content">
               {/* Back to Home Button */}
               <div className="mongodb-back-home">
-                <Link href={`/?lang=${lang}`} className="mongodb-back-btn">
+                <Link href={`/?lang=${currentLang}`} className="mongodb-back-btn">
                   <span className="mongodb-back-icon">←</span>
                   <span className="mongodb-back-text">{texts.backToHome}</span>
                 </Link>
@@ -66,7 +66,7 @@ const LoginMain = () => {
 
               {/* Social Login */}
               <div className="mongodb-social-section">
-                <SocialLogin lang={lang} />
+                <SocialLogin lang={currentLang} />
               </div>
 
               {/* Divider */}
@@ -78,13 +78,13 @@ const LoginMain = () => {
 
               {/* Login Form */}
               <div className="mongodb-form-section">
-                <LoginForm lang={lang} />
+                <LoginForm lang={currentLang} />
               </div>
 
               {/* Footer Links */}
               <div className="mongodb-auth-footer">
                 <p className="mongodb-signup-link">
-                  {texts.noAccount} <Link href={`/register?lang=${lang}`} className="mongodb-link">{texts.signUp}</Link>
+                  {texts.noAccount} <Link href={`/register?lang=${currentLang}`} className="mongodb-link">{texts.signUp}</Link>
                 </p>
               </div>
             </div>
@@ -97,10 +97,10 @@ const LoginMain = () => {
               <div className="mongodb-image-overlay">
                 <div className="mongodb-overlay-content">
                   <h2 className="mongodb-overlay-title">
-                    {lang === 'en' ? 'Welcome to KitchenMind' : 'Chào mừng đến với KitchenMind'}
+                    {currentLang === 'en' ? 'Welcome to KitchenMind' : 'Chào mừng đến với KitchenMind'}
                   </h2>
                   <p className="mongodb-overlay-subtitle">
-                    {lang === 'en'
+                    {currentLang === 'en'
                       ? 'Discover amazing recipes and cooking tips from our community of food lovers.'
                       : 'Khám phá những công thức nấu ăn tuyệt vời và mẹo vặt từ cộng đồng yêu ẩm thực.'
                     }
@@ -109,19 +109,19 @@ const LoginMain = () => {
                     <div className="mongodb-feature-item">
                       <span className="mongodb-feature-icon">🍳</span>
                       <span className="mongodb-feature-text">
-                        {lang === 'en' ? 'Smart Recipe Suggestions' : 'Gợi ý công thức thông minh'}
+                        {currentLang === 'en' ? 'Smart Recipe Suggestions' : 'Gợi ý công thức thông minh'}
                       </span>
                     </div>
                     <div className="mongodb-feature-item">
                       <span className="mongodb-feature-icon">👥</span>
                       <span className="mongodb-feature-text">
-                        {lang === 'en' ? 'Community Sharing' : 'Chia sẻ cộng đồng'}
+                        {currentLang === 'en' ? 'Community Sharing' : 'Chia sẻ cộng đồng'}
                       </span>
                     </div>
                     <div className="mongodb-feature-item">
                       <span className="mongodb-feature-icon">📱</span>
                       <span className="mongodb-feature-text">
-                        {lang === 'en' ? 'Mobile Friendly' : 'Thân thiện di động'}
+                        {currentLang === 'en' ? 'Mobile Friendly' : 'Thân thiện di động'}
                       </span>
                     </div>
                   </div>

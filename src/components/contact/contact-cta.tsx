@@ -1,12 +1,12 @@
 'use client';
-import { useSearchParams } from "next/navigation";
+import { useLanguage } from "@/hooks/use-language";
 import { useForm } from "react-hook-form";
 
 export default function ContactCTA() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data: any) => console.log(data);
-  const lang = useSearchParams()?.get('lang') || 'vi';
-  const texts = lang === 'en' ? {
+  const { currentLang } = useLanguage();
+  const texts = currentLang === 'en' ? {
     title: 'Get in Touch',
     name: 'Name',
     email: 'Email',

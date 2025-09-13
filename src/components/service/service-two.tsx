@@ -9,7 +9,7 @@ import ser_4 from "@/assets/img/home-02/service/sv-icon-4.png";
 // shape
 import shape from "@/assets/img/home-02/service/sv-shape-1.png";
 
-export default function ServiceTwo() {
+const ServiceTwoContent = () => {
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
   const service_accordion = getServiceAccordion(lang);
@@ -111,3 +111,79 @@ const getServiceAccordion = (lang :any) => [
     desc: lang === 'en' ? 'Automatically deduct stock after cooking, with daily expiry reminders.' : 'Tự động trừ tồn kho sau khi nấu, với nhắc nhở hạn sử dụng hàng ngày.',
   },
 ];
+
+export default function ServiceTwo() {
+  const searchParams = useSearchParams();
+  const lang = searchParams?.get('lang') || 'vi';
+  const service_accordion = getServiceAccordion(lang);
+  const texts = lang === 'en' ? {
+    subtitle: 'FEATURES',
+    title: 'Core features for busy families'
+  } : {
+    subtitle: 'TÍNH NĂNG',
+    title: 'Tính năng cốt lõi cho gia đình bận rộn'
+  };
+  return (
+    <div className="tp-service-2-area pb-150 z-index-5">
+      <div className="container container-1480">
+        <div className="row">
+          <div className="col-xl-8">
+            <div className="tp-service-2-title-box mb-70">
+              <span className="tp-section-subtitle-3">
+                <span>
+                  <Leaf />
+                </span>
+                {texts.subtitle}
+              </span>
+              <h4 className="tp-section-title-40">
+                {texts.title}
+              </h4>
+            </div>
+          </div>
+        </div>
+        <div className="row align-items-center">
+          <div className="col-xxl-6 col-xl-4 col-lg-4">
+            <div className="tp-service-2-shape-img text-center text-lg-start">
+              <Image src={shape} alt="" />
+            </div>
+          </div>
+          <div className="col-xxl-6 col-xl-8 col-lg-8">
+            <div className="tp-service-2-accordion-box">
+              <div className="accordion" id="accordionExample">
+                {service_accordion.map((s) => (
+                  <div key={s.id} className="accordion-items">
+                    <h2 className="accordion-header">
+                      <button
+                        className={`accordion-buttons ${s.id !== 1 ? "collapsed" : ""}`}
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target={`#collapse-${s.id}`}
+                        aria-expanded="false"
+                        aria-controls={`collapse-${s.id}`}
+                      >
+                        <span>
+                          <Image src={s.icon} alt="icon" />
+                        </span>
+                        {s.title}
+                        <span className="accordion-icon"></span>
+                      </button>
+                    </h2>
+                    <div
+                      id={`collapse-${s.id}`}
+                      className={`accordion-collapse collapse ${s.id === 1 ? "show" : ""}`}
+                      data-bs-parent="#accordionExample"
+                    >
+                      <div className="accordion-body">
+                        <p>{s.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
