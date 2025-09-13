@@ -81,7 +81,7 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       params.set('lang', 'en');
     }
     const query = params.toString();
-    router.push(query ? `${pathname}?${query}` : pathname);
+    router.push(query ? `${pathname}?${query}` : pathname || '/');
   };
 
   const value: AppContextType = {
