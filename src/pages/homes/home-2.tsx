@@ -1,30 +1,27 @@
 'use client';
-import {gsap} from "gsap";
-import React, { useEffect } from "react";
 import useScrollSmooth from '@/hooks/use-scroll-smooth';
 import { ScrollSmoother, ScrollTrigger, SplitText } from '@/plugins';
 import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { useEffect } from "react";
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText);
 
 // internal imports
-import Wrapper from "@/layouts/wrapper";
-import HeaderTwo from "@/layouts/headers/header-two";
-import HeroBannerTwo from "@/components/hero-banner/hero-banner-two";
-import AboutOne from "@/components/about/about-one";
 import AppDownload from "@/components/app-download/app-download";
-import ServiceTwo from "@/components/service/service-two";
-import ProjectTwo from "@/components/project/project-two";
-import AwardTwo from "@/components/award/award-two";
-import LineText from "@/components/line-text/line-text";
+import HeroBannerTwo from "@/components/hero-banner/hero-banner-two";
 import InstagramArea from "@/components/instagram/instagram-area";
+import LineText from "@/components/line-text/line-text";
+import ProjectTwo from "@/components/project/project-two";
+import ServiceTwo from "@/components/service/service-two";
 import FooterTwo from "@/layouts/footers/footer-two";
+import HeaderTwo from "@/layouts/headers/header-two";
+import Wrapper from "@/layouts/wrapper";
 // animation
-import { bounceAnimation, heroBgAnimation, heroTitleAnim, charAnimation, fadeAnimation, zoomAnimation } from "@/utils/title-animation";
+import { bounceAnimation, charAnimation, fadeAnimation, heroBgAnimation, heroTitleAnim, zoomAnimation } from "@/utils/title-animation";
 // Removed video animation import
-import { panelOneAnimation } from "@/utils/panel-animation";
-import { awardAnimOne } from "@/utils/award-anim";
-import { instagramAnim } from "@/utils/instagram-anim";
 import { hoverBtn } from "@/utils/hover-btn";
+import { instagramAnim } from "@/utils/instagram-anim";
+import { panelOneAnimation } from "@/utils/panel-animation";
 
 const HomeTwoMain = () => {
   useScrollSmooth();
@@ -69,9 +66,6 @@ const HomeTwoMain = () => {
             <HeroBannerTwo />
             {/* hero area end */}
 
-            {/* about area start */}
-            <AboutOne/>
-            {/* about area end */}
 
             {/* app download area start */}
             <AppDownload />
