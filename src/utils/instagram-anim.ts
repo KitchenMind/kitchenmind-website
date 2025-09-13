@@ -24,6 +24,8 @@ function instagramAnim() {
 				width: "580px",
 				height: "580px",
 				borderRadius: "10px",
+				duration: 1,
+				ease: "power2.out"
 			});
 	
 		});
@@ -31,5 +33,5 @@ function instagramAnim() {
 }
 
 export {
-  instagramAnim,
-}
+    instagramAnim
+};

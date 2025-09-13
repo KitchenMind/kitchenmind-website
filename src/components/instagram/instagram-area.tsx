@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
 import { Leaf } from "../svg";
 // instagram images
 import inst_1 from "@/assets/img/home-02/instagram/insta-inner-1.jpg";
@@ -13,17 +12,8 @@ import inst_6 from "@/assets/img/home-02/instagram/insta-inner-6.jpg";
 import inst_7 from "@/assets/img/home-02/instagram/insta-inner-7.jpg";
 
 export default function InstagramArea() {
-  const [basePath, setBasePath] = useState('');
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
-  
-  useEffect(() => {
-    // Detect if we're on GitHub Pages
-    if (typeof window !== 'undefined') {
-      const isGitHubPages = window.location.hostname === 'kitchenmind.github.io';
-      setBasePath(isGitHubPages ? '/kitchenmind-website' : '');
-    }
-  }, []);
   // Update texts
   const texts = lang === 'en' ? {
     subtitle: 'COMMUNITY',
@@ -65,7 +55,8 @@ export default function InstagramArea() {
           </a>
         </div>
         <div className="tp-instagram-thumb">
-          <Image src={`${basePath}/assets/img/home-02/instagram/insta-1.jpg`} alt="inst-img" width={400} height={400} />
+          {/* <Image src={inst_8} alt="inst-img" */}
+          <img src="/assets/img/home-02/instagram/insta-1.jpg" alt="inst-img"/>
         </div>
         <div className="tp-instagram-content-wrap text-start">
           <div className="tp-instagram-title-box">
