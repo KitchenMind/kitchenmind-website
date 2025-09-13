@@ -12,9 +12,11 @@ import inst_6 from "@/assets/img/home-02/instagram/insta-inner-6.jpg";
 import inst_7 from "@/assets/img/home-02/instagram/insta-inner-7.jpg";
 
 export default function InstagramArea() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
+  // Use window.location.pathname to detect if we're on GitHub Pages
+  const isGitHubPages = typeof window !== 'undefined' && window.location.hostname === 'kitchenmind.github.io';
+  const basePath = isGitHubPages ? '/kitchenmind-website' : '';
   // Update texts
   const texts = lang === 'en' ? {
     subtitle: 'COMMUNITY',

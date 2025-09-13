@@ -49,9 +49,11 @@ const getProjectData = (lang: string, basePath: string = '') => [
 ];
 
 export default function ProjectTwo() {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
+  // Use window.location.pathname to detect if we're on GitHub Pages
+  const isGitHubPages = typeof window !== 'undefined' && window.location.hostname === 'kitchenmind.github.io';
+  const basePath = isGitHubPages ? '/kitchenmind-website' : '';
   const project_data = getProjectData(lang, basePath);
 
   return (
