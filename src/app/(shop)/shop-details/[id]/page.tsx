@@ -7,6 +7,13 @@ export const metadata: Metadata = {
   title: "Liko - Shop Details page",
 };
 
+// Generate static params for static export
+export async function generateStaticParams() {
+  return product_data.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
+
 export default function ShopDetailsPage({params}:{params:{id:string}}) {
   const product = [...product_data].find((p) => p.id === Number(params.id));
   return product ? (
