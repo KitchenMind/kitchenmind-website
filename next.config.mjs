@@ -1,6 +1,12 @@
 /** @type {import('next').NextConfig} */
+const isGhPages = process.env.GITHUB_PAGES === 'true';
+const repoName = 'kitchenmind-website';
+
 const nextConfig = {
   output: 'export',
+  // For GitHub Pages project site under https://<user>.github.io/<repo>/
+  basePath: isGhPages ? `/${repoName}` : undefined,
+  assetPrefix: isGhPages ? `/${repoName}/` : undefined,
   trailingSlash: true,
   images: {
     unoptimized: true,
