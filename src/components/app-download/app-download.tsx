@@ -270,8 +270,8 @@ const AppDownload = () => {
           <div className="col-xl-6 col-lg-8 col-md-10 col-sm-12">
             <div className="tp-app-download-mockup text-center">
               <div className="tp-smartphone-3d tp_fade_bottom">
-                <Image 
-                  src="/assets/img/home-02/mockup/iphone-2.png" 
+                <Image
+                  src={`${basePath}/assets/img/home-02/mockup/iphone-2.png`}
                   alt="KitchenMind App Dashboard"
                   className="tp-smartphone-image tp-zoom-in"
                   width={1000}

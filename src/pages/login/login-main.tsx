@@ -94,39 +94,7 @@ const LoginMain = () => {
           <div className="mongodb-auth-right">
             <div className="mongodb-full-image">
               {/* Background image will be set via CSS */}
-              <div className="mongodb-image-overlay">
-                <div className="mongodb-overlay-content">
-                  <h2 className="mongodb-overlay-title">
-                    {currentLang === 'en' ? 'Welcome to KitchenMind' : 'Chào mừng đến với KitchenMind'}
-                  </h2>
-                  <p className="mongodb-overlay-subtitle">
-                    {currentLang === 'en'
-                      ? 'Discover amazing recipes and cooking tips from our community of food lovers.'
-                      : 'Khám phá những công thức nấu ăn tuyệt vời và mẹo vặt từ cộng đồng yêu ẩm thực.'
-                    }
-                  </p>
-                  <div className="mongodb-overlay-features">
-                    <div className="mongodb-feature-item">
-                      <span className="mongodb-feature-icon">🍳</span>
-                      <span className="mongodb-feature-text">
-                        {currentLang === 'en' ? 'Smart Recipe Suggestions' : 'Gợi ý công thức thông minh'}
-                      </span>
-                    </div>
-                    <div className="mongodb-feature-item">
-                      <span className="mongodb-feature-icon">👥</span>
-                      <span className="mongodb-feature-text">
-                        {currentLang === 'en' ? 'Community Sharing' : 'Chia sẻ cộng đồng'}
-                      </span>
-                    </div>
-                    <div className="mongodb-feature-item">
-                      <span className="mongodb-feature-icon">📱</span>
-                      <span className="mongodb-feature-text">
-                        {currentLang === 'en' ? 'Mobile Friendly' : 'Thân thiện di động'}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          
             </div>
           </div>
         </div>

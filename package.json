@@ -9,6 +9,8 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "build:mobile": "next build && next export -o out",
+    "build:gh-pages": "cross-env GITHUB_PAGES=true next build",
+    "deploy:gh-pages": "cross-env GITHUB_PAGES=true next build && next export -o out",
     "cap:add:android": "cap add android",
     "cap:copy": "cap copy android",
     "cap:sync": "cap sync android"
@@ -55,6 +57,7 @@
     "@types/react-scroll": "^1.8.10",
     "@types/react-slick": "^0.23.13",
     "@types/three": "^0.164.0",
+    "cross-env": "^10.0.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "typescript": "^5"

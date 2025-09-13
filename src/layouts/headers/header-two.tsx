@@ -43,7 +43,7 @@ export default function HeaderTwo() {
                   </Link>
                   <Link className="logo-2" href="/">
                     <Image
-                      src={`${basePath}/assets/img/logo/logo-white.png`}
+                      src={`${basePath}/assets/img/logo/logo.png`}
                       alt="logo"
                       width={85}
                       height={26}

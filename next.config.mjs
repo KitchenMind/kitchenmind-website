@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
 const isGhPages = process.env.GITHUB_PAGES === 'true';
+const isExport = process.env.NODE_ENV === 'production' && (isGhPages || process.env.EXPORT === 'true');
 const repoName = 'kitchenmind-website';
 
 const nextConfig = {
-  output: 'export',
+  // Only export for GitHub Pages or when explicitly requested
+  ...(isExport && { output: 'export' }),
   // For GitHub Pages project site under https://<user>.github.io/<repo>/
   basePath: isGhPages ? `/${repoName}` : undefined,
   assetPrefix: isGhPages ? `/${repoName}/` : undefined,
@@ -12,7 +14,7 @@ const nextConfig = {
   },
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    unoptimized: isExport, // Only unoptimize for export builds
     // domains can be removed if you no longer use placehold.co
     domains: ['placehold.co'],
     remotePatterns: [
