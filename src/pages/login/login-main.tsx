@@ -58,6 +58,7 @@ const LoginMain = () => {
 
               {/* Logo Section */}
               <div className="mongodb-auth-logo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={logo.src} alt="KitchenMind" className="mongodb-logo-img" />
               </div>
 

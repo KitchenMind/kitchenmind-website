@@ -1,7 +1,7 @@
 'use client';
-import React, { CSSProperties } from 'react';
 import Image from 'next/image';
 import { useSearchParams } from "next/navigation";
+import { CSSProperties } from 'react';
 // images
 import ab_1 from '@/assets/img/home-02/about/ab-1.jpg';
 import ab_2 from '@/assets/img/home-02/about/ab-2.jpg';
@@ -67,7 +67,7 @@ const AboutOne = () => {
           </div>
           <div className="col-xl-2 col-lg-6 col-md-6 order-1">
             <div className="tp-about-2-right-thumb text-end">
-              <Image data-speed="auto" data-lag="0" src={ab_3} alt="ab-img" data-lag="0" style={imgStyle} />
+              <Image data-speed="auto" data-lag="0" src={ab_3} alt="ab-img" style={imgStyle} />
             </div>
           </div>
         </div>

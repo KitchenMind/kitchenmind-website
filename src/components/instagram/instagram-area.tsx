@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
 import Image from "next/image";
-import { Leaf } from "../svg";
 import { useSearchParams } from "next/navigation";
+import { Leaf } from "../svg";
 // instagram images
 import inst_1 from "@/assets/img/home-02/instagram/insta-inner-1.jpg";
 import inst_2 from "@/assets/img/home-02/instagram/insta-inner-2.jpg";
@@ -57,6 +56,7 @@ export default function InstagramArea() {
         </div>
         <div className="tp-instagram-thumb">
           {/* <Image src={inst_8} alt="inst-img" */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/assets/img/home-02/instagram/insta-1.jpg" alt="inst-img"/>
         </div>
         <div className="tp-instagram-content-wrap text-start">

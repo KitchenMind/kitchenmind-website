@@ -1,8 +1,8 @@
 'use client';
-import React, { useEffect, useRef } from "react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useTheme } from "next-themes";
+import { useEffect, useRef } from "react";
 // Removed Leaf icon for clean modern design
 
 const AppDownload = () => {
@@ -175,7 +175,7 @@ const AppDownload = () => {
         }
       }
     });
-  }, [resolvedTheme]);
+  }, [resolvedTheme, isDark]);
 
   const texts = lang === 'en' ? {
     subtitle: 'Download Now',
