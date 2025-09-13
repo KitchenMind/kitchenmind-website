@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const getProjectData = (lang: string, basePath: string = '') => [
   {
@@ -49,11 +50,18 @@ const getProjectData = (lang: string, basePath: string = '') => [
 ];
 
 export default function ProjectTwo() {
+  const [basePath, setBasePath] = useState('');
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
-  // Use window.location.pathname to detect if we're on GitHub Pages
-  const isGitHubPages = typeof window !== 'undefined' && window.location.hostname === 'kitchenmind.github.io';
-  const basePath = isGitHubPages ? '/kitchenmind-website' : '';
+  
+  useEffect(() => {
+    // Detect if we're on GitHub Pages
+    if (typeof window !== 'undefined') {
+      const isGitHubPages = window.location.hostname === 'kitchenmind.github.io';
+      setBasePath(isGitHubPages ? '/kitchenmind-website' : '');
+    }
+  }, []);
+  
   const project_data = getProjectData(lang, basePath);
 
   return (

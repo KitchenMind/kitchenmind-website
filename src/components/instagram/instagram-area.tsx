@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
+import { useState, useEffect } from "react";
 import { Leaf } from "../svg";
 // instagram images
 import inst_1 from "@/assets/img/home-02/instagram/insta-inner-1.jpg";
@@ -12,11 +13,17 @@ import inst_6 from "@/assets/img/home-02/instagram/insta-inner-6.jpg";
 import inst_7 from "@/assets/img/home-02/instagram/insta-inner-7.jpg";
 
 export default function InstagramArea() {
+  const [basePath, setBasePath] = useState('');
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
-  // Use window.location.pathname to detect if we're on GitHub Pages
-  const isGitHubPages = typeof window !== 'undefined' && window.location.hostname === 'kitchenmind.github.io';
-  const basePath = isGitHubPages ? '/kitchenmind-website' : '';
+  
+  useEffect(() => {
+    // Detect if we're on GitHub Pages
+    if (typeof window !== 'undefined') {
+      const isGitHubPages = window.location.hostname === 'kitchenmind.github.io';
+      setBasePath(isGitHubPages ? '/kitchenmind-website' : '');
+    }
+  }, []);
   // Update texts
   const texts = lang === 'en' ? {
     subtitle: 'COMMUNITY',

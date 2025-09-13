@@ -182,13 +182,11 @@ const AppDownload = () => {
     subtitle: 'Download Now',
     title: 'Get KitchenMind on Your Phone',
     desc1: "Transform your kitchen into your smart assistant.",
-    desc2: "Available on Google Play & App Store.",
     downloadText: 'Download the app and start your smart kitchen journey today!'
   } : {
     subtitle: 'Tải Ngay',
     title: 'Tải KitchenMind về điện thoại',
     desc1: 'Biến nhà bếp thành trợ lý thông minh của bạn.',
-    desc2: 'Có mặt trên Google Play & App Store.',
     downloadText: 'Tải ứng dụng và bắt đầu hành trình nhà bếp thông minh ngay hôm nay!'
   };
   
@@ -222,12 +220,6 @@ const AppDownload = () => {
                     className="tp-app-download-desc-line1 tp_fade_bottom tp-typewriter-effect"
                   >
                     {texts.desc1}
-                  </p>
-                  <p 
-                    ref={desc2Ref}
-                    className="tp-app-download-desc-line2 tp_fade_bottom tp-slide-up-effect"
-                  >
-                    {texts.desc2}
                   </p>
                 </div>
                 
