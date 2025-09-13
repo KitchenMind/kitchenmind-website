@@ -1,7 +1,6 @@
-import React from "react";
-import { Metadata } from "next";
-import LoginMain from "@/pages/login/login-main";
 import SuspenseWrapper from "@/components/suspense-wrapper";
+import LoginMain from "@/pages/login/login-main";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Liko - Login page",

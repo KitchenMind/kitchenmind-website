@@ -289,7 +289,7 @@
         }
 
         & span {
-            color: var(--tp-common-white);
+            color: var(--tp-common-white) !important;
             font-size: 18px;
             font-weight: 400;
             line-height: 1;

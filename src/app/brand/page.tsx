@@ -1,7 +1,6 @@
-import React from "react";
-import { Metadata } from "next";
-import BrandMain from "@/pages/brand/brand-main";
 import SuspenseWrapper from "@/components/suspense-wrapper";
+import BrandMain from "@/pages/brand/brand-main";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Liko - Brand page",

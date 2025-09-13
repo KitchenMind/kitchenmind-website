@@ -1,6 +1,6 @@
-import { Metadata } from "next";
-import HomeTwoMain from "@/pages/homes/home-2";
 import SuspenseWrapper from "@/components/suspense-wrapper";
+import HomeTwoMain from "@/pages/homes/home-2";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Liko - Home Page",
