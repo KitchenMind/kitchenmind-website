@@ -1,5 +1,12 @@
-import $ from 'jquery';
 import product_data from "@/data/product-data";
+
+// Utility function to get correct asset path for GitHub Pages
+export function getAssetPath(path: string): string {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  // Remove leading slash if present to avoid double slashes
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  return `${basePath}/${cleanPath}`;
+}
 
 // Get max price
 export function maxPrice(): number {

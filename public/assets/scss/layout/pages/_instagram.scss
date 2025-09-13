@@ -34,10 +34,9 @@
             height: 100%;   
             width: 100%;
             object-fit: cover;
-            @media #{$xs}{
-                height: auto;
-                max-height: 300px;
-            }
+            background-position: center;
+            background-size: cover;
+            margin: 0 auto;
         }
         &-wrap{
             display: inline-block;

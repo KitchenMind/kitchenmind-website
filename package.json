@@ -8,9 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "build:mobile": "next build && next export -o out",
-    "build:gh-pages": "cross-env GITHUB_PAGES=true next build",
-    "deploy:gh-pages": "cross-env GITHUB_PAGES=true next build && next export -o out",
+    "build:export": "cross-env EXPORT=true next build",
+    "preview": "npx serve@latest out",
+    "build:gh-pages": "cross-env GITHUB_PAGES=true NODE_ENV=production next build",
     "cap:add:android": "cap add android",
     "cap:copy": "cap copy android",
     "cap:sync": "cap sync android"
