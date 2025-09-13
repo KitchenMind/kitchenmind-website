@@ -56,9 +56,7 @@ export default function InstagramArea() {
           </a>
         </div>
         <div className="tp-instagram-thumb">
-          {/* <Image src={inst_8} alt="inst-img" */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${basePath}/assets/img/home-02/instagram/insta-1.jpg`} alt="inst-img"/>
+          <Image src={`${basePath}/assets/img/home-02/instagram/insta-1.jpg`} alt="inst-img" width={400} height={400} />
         </div>
         <div className="tp-instagram-content-wrap text-start">
           <div className="tp-instagram-title-box">
