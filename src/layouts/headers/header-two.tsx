@@ -1,15 +1,16 @@
 'use client';
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import User from "@/components/svg/user";
 import { useApp } from "@/contexts/app-context";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
-import useSticky from "@/hooks/use-sticky";
 import MobileOffcanvasTwo from "@/components/offcanvas/mobile-offcanvas-2";
+import useSticky from "@/hooks/use-sticky";
 
 
 export default function HeaderTwo() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const {sticky} = useSticky();
   const [openOffCanvas, setOpenOffcanvas] = React.useState(false);
   const { currentLang } = useApp();
@@ -34,7 +35,7 @@ export default function HeaderTwo() {
                 <div className="tp-header-logo">
                   <Link className="logo-1" href="/">
                     <Image
-                      src="/assets/img/logo/logo.png"
+                      src={`${basePath}/assets/img/logo/logo.png`}
                       alt="logo"
                       width={85}
                       height={26}
@@ -42,7 +43,7 @@ export default function HeaderTwo() {
                   </Link>
                   <Link className="logo-2" href="/">
                     <Image
-                      src="/assets/img/logo/logo-white.png"
+                      src={`${basePath}/assets/img/logo/logo-white.png`}
                       alt="logo"
                       width={85}
                       height={26}

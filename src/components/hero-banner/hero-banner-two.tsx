@@ -1,9 +1,9 @@
 'use client';
-import React from "react";
 // Removed unused imports - no text content needed
 // Video background instead of static image
 
 const HeroBannerTwo = () => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   // Simplified component - just video background
   return (
     <div className="tp-hero-2-area tp-hero-2-pt">
@@ -28,7 +28,7 @@ const HeroBannerTwo = () => {
                       zIndex: -1
                     }}
                   >
-                    <source src="/assets/videos/bg-landing-1-en.mp4" type="video/mp4" />
+                    <source src={`${basePath}/assets/videos/bg-landing-1-en.mp4`} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>

@@ -7,6 +7,9 @@ const nextConfig = {
   // For GitHub Pages project site under https://<user>.github.io/<repo>/
   basePath: isGhPages ? `/${repoName}` : undefined,
   assetPrefix: isGhPages ? `/${repoName}/` : undefined,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isGhPages ? `/${repoName}` : '',
+  },
   trailingSlash: true,
   images: {
     unoptimized: true,

@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 // Removed Leaf icon for clean modern design
 
 const AppDownload = () => {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const searchParams = useSearchParams();
   const { resolvedTheme } = useTheme();
   const lang = searchParams?.get('lang') || 'vi';
@@ -237,8 +238,8 @@ const AppDownload = () => {
                       href="#" 
                       className="tp-app-download-btn-large tp-btn-bounce"
                     >
-                      <Image 
-                        src="/assets/img/logo/chplay.png" 
+                      <Image
+                        src={`${basePath}/assets/img/logo/chplay.png`}
                         alt="Get it on Google Play"
                         width={300}
                         height={100}
@@ -249,8 +250,8 @@ const AppDownload = () => {
                       href="#" 
                       className="tp-app-download-btn-large tp-btn-bounce"
                     >
-                      <Image 
-                        src="/assets/img/logo/appstore.svg" 
+                      <Image
+                        src={`${basePath}/assets/img/logo/appstore.svg`}
                         alt="Download on the App Store"
                         width={300}
                         height={100}

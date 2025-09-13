@@ -12,6 +12,7 @@ import inst_6 from "@/assets/img/home-02/instagram/insta-inner-6.jpg";
 import inst_7 from "@/assets/img/home-02/instagram/insta-inner-7.jpg";
 
 export default function InstagramArea() {
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
   const searchParams = useSearchParams();
   const lang = searchParams?.get('lang') || 'vi';
   // Update texts
@@ -57,7 +58,7 @@ export default function InstagramArea() {
         <div className="tp-instagram-thumb">
           {/* <Image src={inst_8} alt="inst-img" */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/assets/img/home-02/instagram/insta-1.jpg" alt="inst-img"/>
+          <img src={`${basePath}/assets/img/home-02/instagram/insta-1.jpg`} alt="inst-img"/>
         </div>
         <div className="tp-instagram-content-wrap text-start">
           <div className="tp-instagram-title-box">
