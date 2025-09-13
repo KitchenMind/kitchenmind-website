@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nextjs-build-${{ matrix.node-version }}
-          path: .next/
+          path: out/
           retention-days: 7
 
   deploy:
@@ -50,9 +50,6 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     
-    environment:
-      name: production
-      url: ${{ steps.deploy.outputs.url }}
 
     steps:
       - name: Checkout code
@@ -62,15 +59,14 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: nextjs-build-20.x
-          path: .next/
+          path: out/
 
       - name: Deploy to GitHub Pages
         id: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .next
-          cname: ${{ vars.DOMAIN || '' }}
+          publish_dir: out
 
   # Alternative: Deploy to Vercel (uncomment if using Vercel)
   # deploy-vercel:

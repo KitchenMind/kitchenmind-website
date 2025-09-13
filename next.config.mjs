@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
   images: {
+    unoptimized: true,
     // domains can be removed if you no longer use placehold.co
     domains: ['placehold.co'], 
     remotePatterns: [
